@@ -6,7 +6,7 @@ Please pull down the code and add the .env file from another project of yours be
 ## Configure your mail drivers so that it can send a mail.
 Add this in the .env file where it says mail_driver. remove those and add these.
 | Key | Values |
-|-----|:------:|
+|-----|--------|
 |MAIL_DRIVER=|smtp| 
 |MAIL_HOST=|smtp.gmail.com|
 |MAIL_PORT=|587|

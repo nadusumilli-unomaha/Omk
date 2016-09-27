@@ -1,6 +1,7 @@
 # Omaha Mentor for Kids
 
-
+## Issues with the env file. 
+Please pull down the code and add the .env file from another project of yours because github doesnt upload the .env files.
 
 ## Development Tools
 

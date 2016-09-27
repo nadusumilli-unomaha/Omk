@@ -3,6 +3,15 @@
 ## Issues with the env file. 
 Please pull down the code and add the .env file from another project of yours because github doesnt upload the .env files.
 
+## Configure your mail drivers so that it can send a mail.
+Add this in the .env file where it says mail_driver. remove those and add these.
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=nadusumilli@unomaha.edu	
+MAIL_PASSWORD=obdvkhyvliznipyn
+MAIL_ENCRYPTION=tls
+
 ## Development Tools
 
 ### Laravel PHP Framework

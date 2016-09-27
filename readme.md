@@ -11,7 +11,7 @@ Add this in the .env file where it says mail_driver. remove those and add these.
 |MAIL_DRIVER=|smtp| 
 |MAIL_HOST=|smtp.gmail.com|
 |MAIL_PORT=|587|
-|MAIL_USERNAME=|nadusumilli@unomaha.edu|	
+|MAIL_USERNAME=|your email|	
 |MAIL_PASSWORD=|obdvkhyvliznipyn|
 |MAIL_ENCRYPTION=|tls|
 

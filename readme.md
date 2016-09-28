@@ -49,7 +49,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ### MYSQL
 
-Please use the following when you configure your .env file.
+Please use the following when you configure your .env file for your development environment.
 
 |Key|value|
 |---|-----|

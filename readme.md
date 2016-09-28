@@ -49,6 +49,17 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ### MYSQL
 
+Please use the following when you configure your .env file.
+
+|Key|value|
+|---|-----|
+|DB_CONNECTION=|mysql|
+|DB_HOST=|localhost|
+|DB_PORT=|3306|
+|DB_DATABASE=|omahamentors|
+|DB_USERNAME=|root|
+|DB_PASSWORD=||
+
 ### Heroku Cloud
 
 ### GitHub

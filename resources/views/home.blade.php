@@ -9,7 +9,7 @@
                     <div class="intro-text">
                         <div class="panel panel-default">
                           <div class="panel-heading">Panel Heading</div>
-                          <div class="panel-body style="color:7FFFD4;">Panel Content</div>
+                          <div class="panel-body " style="color:black;">Panel Content</div>
                         </div>
                     </div>
                 </div>

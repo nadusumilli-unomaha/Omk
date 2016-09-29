@@ -41,7 +41,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/OmahaMentors/public/">Omaha Mentor for Kids</a>
+                <a class="navbar-brand" href="{{ url('/') }}">Omaha Mentor for Kids</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -89,7 +89,9 @@
         <!-- /.container-fluid -->
     </nav>
     
+    <!-- Main Content in the center of the page.-->
     @yield('content')
+
     <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">

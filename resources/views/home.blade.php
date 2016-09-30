@@ -1,20 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('content')
-<header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
-                    <div class="intro-text">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Panel Heading</div>
-                          <div class="panel-body " style="color:black;">Panel Content</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</header>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Panel Heading</div>
+      <div class="panel-body" style="color:black;">Panel Content</div>
+      <a class="btn btn-primary" href="{{action('AdminController@index')}}">Admins</a>
+    </div>
 
 @endsection

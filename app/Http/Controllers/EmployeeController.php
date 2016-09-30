@@ -65,6 +65,7 @@ class EmployeeController extends Controller
                 'cell_phone' => 'required|numeric|digits:10|unique:employees,cell_phone',
             ]);*/
         $employee= new Employee($request->all());
+        $employee->type = 'Employee';
         $employee->save();
         return redirect('employees');
     }

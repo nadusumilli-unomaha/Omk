@@ -65,6 +65,7 @@ class AdminController extends Controller
                 'cell_phone' => 'required|numeric|digits:10|unique:admins,cell_phone',
             ]);*/
         $admin= new Admin($request->all());
+        $admin->type = 'Admin';
         $admin->save();
         return redirect('admins');
     }

@@ -65,6 +65,7 @@ class MentorController extends Controller
                 'cell_phone' => 'required|numeric|digits:10|unique:mentors,cell_phone',
             ]);*/
         $mentor= new Mentor($request->all());
+        $mentor->type = 'Mentor';
         $mentor->save();
         return redirect('mentors');
     }

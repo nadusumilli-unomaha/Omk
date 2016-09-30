@@ -25,6 +25,7 @@ class CreateAdminsTable extends Migration
             $table->string('email');
             $table->integer('phone');
             $table->string('school');
+            $table->string('type');
             $table->timestamps();
         });
     }

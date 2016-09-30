@@ -26,6 +26,7 @@ class CreateMentorsTable extends Migration
             $table->integer('zip');
             $table->string('email');
             $table->integer('phone');
+            $table->string('type');
             $table->timestamps();
         });
 

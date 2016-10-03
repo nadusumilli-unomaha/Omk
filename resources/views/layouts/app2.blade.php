@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>Omaha Mentor for Kids</title>
+    <link rel="icon" href="img/OMK.png" type="image/png">
 
     <!-- Bootstrap Core CSS -->
     <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -96,7 +97,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
+                    {{ HTML::image('img/profile.png', '', array('class' => 'img-responsive')) }}
+                    <!-- <img class="img-responsive" src="img/profile.png" alt=""> -->
                     <div class="intro-text">
                         @yield('content')
                     </div>

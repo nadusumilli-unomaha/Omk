@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>Omaha Mentor for Kids</title>
+    <link rel="icon" href="img/OMK.png" type="image/png">
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

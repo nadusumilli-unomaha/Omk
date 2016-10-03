@@ -10,6 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Omaha Mentor For Kids</title>
+    <link rel="icon" href="img/OMK.png" type="image/png">
 
     <!-- Scripts -->
     <script>

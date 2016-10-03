@@ -8,9 +8,9 @@
                 <div class="panel-heading">Admin Acess Dashboard</div>
                 <div class="panel-body">
                     <ul>
-                    	<li><a class="btn btn-primary" href="{{action('AdminController@create')}}">Admins</a></li>
-                    	<li><a class="btn btn-primary" href="{{action('EmployeeController@create')}}">Employee</a></li>
-                    	<li><a class="btn btn-primary" href="{{action('MentorController@create')}}">Mentor</a></li>
+                    	<li><a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('AdminController@create')}}">Admins</a></li>
+                    	<li><a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('EmployeeController@create')}}">Employee</a></li>
+                    	<li><a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('MentorController@create')}}">Mentor</a></li>
                     </ul>
                 </div>
             </div>

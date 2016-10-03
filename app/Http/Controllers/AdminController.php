@@ -53,17 +53,17 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        /*$this->validate($request,[
-                'name' => 'required|unique:admins,name',
+        $this->validate($request,[
+                'lastName' => 'required',
+                'firstName' => 'required',
                 'address' => 'required',
-                'cust_number' => 'required|numeric',
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required|numeric|digits:5',
                 'email' => 'required|email|unique:admins,email',
-                'home_phone' => 'numeric|digits:10|unique:admins,home_phone',
-                'cell_phone' => 'required|numeric|digits:10|unique:admins,cell_phone',
-            ]);*/
+                'phone' => 'required|numeric|digits:10|unique:admins,phone',
+                'school' => 'required',
+            ]);
         $admin= new Admin($request->all());
         $admin->type = 'Admin';
         $admin->save();

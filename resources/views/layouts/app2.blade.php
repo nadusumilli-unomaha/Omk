@@ -101,11 +101,12 @@
     <header>
         <div class="container">
             {{ HTML::image('img/profile.png', '', array('class' => 'img-responsive')) }}
+        </div>
             <!-- <img class="img-responsive" src="img/profile.png" alt=""> -->
             <div class="intro-text">
+                <div class="container-fluid"></div>
                 @yield('content')
             </div>
-        </div>
     </header>
 
     <!-- Footer -->

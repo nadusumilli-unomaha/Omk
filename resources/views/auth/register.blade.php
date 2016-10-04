@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <div class="col-md-6 text-center">
                         <br/>
-                            <button type="submit" class="btn btn-primary" style="margin: 0px 0px 0px 112px;">
+                            <button type="submit" class="btn btn-primary " style="margin: 0px 0px 0px 112px;">
                                 Register
                             </button>
                         </div>

@@ -1,8 +1,8 @@
 @extends('layouts.app2')
 
 @section('content')
-        <a class="btn btn-primary pull-right" style="margin: 10px 10px 10px 10px;" href="{{ URL::previous() }}">Go Back</a>
-        <div class="col-lg-6" style="margin: 0px 0px 0px 280px;">
+        <a class="btn btn-primary" style="margin: 10px 300px 10px 10px;" href="{{ URL::previous() }}">Go Back</a>
+        <div class="col-lg-3" style="margin: 0px 0px 0px 700px;">
         <div class="panel panel-default ">
             <div class="panel-heading"><strong>New Admin</strong></div>
             <div class="panel-body">

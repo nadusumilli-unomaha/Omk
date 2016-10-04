@@ -104,9 +104,11 @@
         </div>
             <!-- <img class="img-responsive" src="img/profile.png" alt=""> -->
             <div class="intro-text">
-                <div class="container-fluid"></div>
-                @yield('content')
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
             </div>
+            <div class="container"></div>
     </header>
 
     <!-- Footer -->

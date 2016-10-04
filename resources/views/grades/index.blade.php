@@ -8,22 +8,20 @@
         }
     </style>
     <!-- This is the admin dashboard stuff with the colum sizing. -->
-    <div class="col-md-7 col-md-offset-3">
+    <div class="col-md-4 col-md-offset-4">
         <div class="panel panel-default">
             <div class="panel-heading">Admin Acess Dashboard</div>
             <div class="panel-body">                   
                 <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('AdminController@create')}}">Admins</a>
                 <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('EmployeeController@index')}}">Employee</a>
                 <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('MentorController@index')}}">Mentor</a>
-                <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('AttendanceController@index')}}">Attendance</a>
-                <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('GradeController@index')}}">Grade</a>
             </div>
         </div>
     </div>
 
     <!-- The code to list all the students and other people stuff that can admin can see and create.-->
-    <div class="col-md-9 col-sm-offset-1 table-responsive">    
-        <table class="table table-bordered table-striped table-hover table-inverse">
+    <div>    
+        <table class="table table-striped table-bordered table-hover">
             <thead>
             <tr class="bg-info">
                 <th>lastName</th>
@@ -39,21 +37,21 @@
             </tr>
             </thead>
             <tbody>
-            @foreach ($admins as $admin)
+            @foreach ($grades as $grade)
                 <tr>
-                        <td>{{ $admin->lastName }}</td>
-                        <td>{{ $admin->firstName }}</td>
-                        <td>{{ $admin->address }}</td>
-                        <td>{{ $admin->city }}</td>
-                        <td>{{ $admin->state }}</td>
-                        <td>{{ $admin->zip }}</td>
-                        <td>{{ $admin->email }}</td>
-                        <td>{{ $admin->phone }}</td>
-                        <td>{{ $admin->school }}</td>
-                        <td><a href="{{url('admins',$admin->id)}}" class="btn btn-primary">Read</a></td>
-                        <td><a href="{{route('admins.edit',$admin->id)}}" class="btn btn-warning">Update</a></td>
+                        <td>{{ $grade->lastName }}</td>
+                        <td>{{ $grade->firstName }}</td>
+                        <td>{{ $grade->address }}</td>
+                        <td>{{ $grade->city }}</td>
+                        <td>{{ $grade->state }}</td>
+                        <td>{{ $grade->zip }}</td>
+                        <td>{{ $grade->email }}</td>
+                        <td>{{ $grade->phone }}</td>
+                        <td>{{ $grade->school }}</td>
+                        <td><a href="{{url('grades',$grade->id)}}" class="btn btn-primary">Read</a></td>
+                        <td><a href="{{route('grades.edit',$grade->id)}}" class="btn btn-warning">Update</a></td>
                         <td>
-                            {!! Form::open(['method' => 'DELETE', 'route'=>['admins.destroy', $admin->id], 'onSubmit'=> 'if(!confirm("\n\nAre you Sure you want to delete the admin?")){return false;}'])!!}
+                            {!! Form::open(['method' => 'DELETE', 'route'=>['grades.destroy', $grade->id], 'onSubmit'=> 'if(!confirm("\n\nAre you Sure you want to delete the grade?")){return false;}'])!!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                             {!! Form::close() !!}
                         </td>

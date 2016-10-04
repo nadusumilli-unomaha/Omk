@@ -21,4 +21,8 @@ Route::resource('students','StudentController');
 Route::resource('mentors','MentorController');
 Route::resource('employees','EmployeeController');
 Route::resource('admins','AdminController');
+Route::resource('attendances','AttendanceController');
+Route::resource('grades','GradeController');
+Route::resource('notes','NoteController');
+Route::resource('notifications','NotificationController');
 Route::get('/home', 'HomeController@index');

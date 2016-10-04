@@ -23,8 +23,7 @@ class CreateAdminsTable extends Migration
             $table->string('state');
             $table->integer('zip');
             $table->string('email');
-            $table->integer('phone');
-            $table->string('school');
+            $table->string('phone');
             $table->string('type');
             $table->timestamps();
         });

@@ -101,13 +101,13 @@
         <div class="footer-above">
             <div class="container">
                 <div class="row">
-                    <div class="footer-col col-md-4">
+                    <div class="footer-col col-md-3">
                         <h3>Location</h3>
                         <p>University of Nebraska
                             <br>6001 Dodge Street
                             <br>Omaha, NE 68182</p>
                     </div>
-                    <div class="footer-col col-md-4">
+                    <div class="footer-col col-md-3">
                         <h3>Around the Web</h3>
                         <ul class="list-inline">
                             <li>
@@ -127,10 +127,13 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="footer-col col-md-4">
+                    <div class="footer-col col-md-3">
                         <h3>About Super Awesome</h3>
                         <p>Super Awesome is a software development company which provides sofware related service to companies.</p>
                     </div>
+                    <div class="footer-col col-md-3">
+                        <img class="img-responsive" src="img/SA.png" alt="">
+                    </div>                
                 </div>
             </div>
         </div>

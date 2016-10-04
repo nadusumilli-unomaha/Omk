@@ -10,7 +10,7 @@ use Auth;
 
 use Session;
 
-class NotificationController extends Controller
+class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +20,8 @@ class NotificationController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $notifications=Notification::all();
-            return view('notifications.index',compact('notifications'));
+            $notes=Note::all();
+            return view('notes.index',compact('notes'));
         }
         else{
             return redirect('/');
@@ -36,7 +36,7 @@ class NotificationController extends Controller
     public function create()
     {
         if(Auth::check()){
-            return view('notifications.create');
+            return view('notes.create');
         }
         else{
             return redirect('/');
@@ -58,14 +58,14 @@ class NotificationController extends Controller
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required|numeric|digits:5',
-                'email' => 'required|email|unique:notifications,email',
-                'phone' => 'required|numeric|digits:10|unique:notifications,phone',
+                'email' => 'required|email|unique:notes,email',
+                'phone' => 'required|numeric|digits:10|unique:notes,phone',
                 'school' => 'required',
             ]);
-        $notification= new Notification($request->all());
-        $notification->type = 'Notification';
-        $notification->save();
-        return redirect('notifications');
+        $note= new Note($request->all());
+        $note->type = 'Note';
+        $note->save();
+        return redirect('notes');
     }
 
     /**
@@ -77,8 +77,8 @@ class NotificationController extends Controller
     public function show($id)
     {
         if(Auth::check()){
-            $notification = Notification::findOrFail($id);
-            return view('notifications.show',compact('notification'));
+            $note = Note::findOrFail($id);
+            return view('notes.show',compact('note'));
         }
         else{
             return redirect('/');
@@ -94,12 +94,12 @@ class NotificationController extends Controller
     public function edit($id)
     {
         if(Auth::check() ){
-            $notification=Notification::find($id);
-            return view('notifications.edit',compact('notification'));
+            $note=Note::find($id);
+            return view('notes.edit',compact('note'));
         }
         else{
-            session()->flash('cust_edit_msg', 'You do not have permissions to edit other notifications!.');
-            return redirect('notifications');
+            session()->flash('cust_edit_msg', 'You do not have permissions to edit other notes!.');
+            return redirect('notes');
         }
     }
 
@@ -112,10 +112,10 @@ class NotificationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $notification= new Notification($request->all());
-        $notification=Notification::find($id);
-        $notification->update($request->all());
-        return redirect('notifications');
+        $note= new Note($request->all());
+        $note=Note::find($id);
+        $note->update($request->all());
+        return redirect('notes');
     }
 
     /**
@@ -126,7 +126,7 @@ class NotificationController extends Controller
      */
     public function destroy($id)
     {
-        Notification::find($id)->delete();
-        return redirect('notifications');
+        Note::find($id)->delete();
+        return redirect('notes');
     }
 }

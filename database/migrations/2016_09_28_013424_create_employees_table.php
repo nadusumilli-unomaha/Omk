@@ -25,7 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('zip');
             $table->string('email');
             $table->integer('phone');
-            $table->string('school');
+            $table->string('status');
             $table->string('type');
             $table->timestamps();
         });

@@ -16,11 +16,12 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('Details');
+            $table->string('Description');
             $table->integer('mentor_id')->unsigned();
             $table->integer('student_id')->unsigned();
             $table->integer('employee_id')->unsigned();
             $table->integer('admin_id')->unsigned();
+            $table->integer('attendance_id')->unsigned();
             $table->date('Date');
             $table->timestamps();
         });
@@ -30,6 +31,7 @@ class CreateNotificationsTable extends Migration
            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+           $table->foreign('attendance_id')->references('id')->on('attendances')->onDelete('cascade');
         });
     }
 

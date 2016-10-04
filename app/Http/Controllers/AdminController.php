@@ -95,7 +95,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        if((Auth::check() && Session::get("login_id") == $id) || Auth::user()->email == 'admin@admin.com'){
+        if(Auth::check() ){
             $admin=Admin::find($id);
             return view('admins.edit',compact('admin'));
         }

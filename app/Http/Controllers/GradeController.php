@@ -21,7 +21,13 @@ class GradeController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::check()){
+            $grades=Grade::all();
+            return view('grades.index',compact('grades'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -31,7 +37,12 @@ class GradeController extends Controller
      */
     public function create()
     {
-        //
+        if(Auth::check()){
+            return view('grades.create');
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -42,7 +53,21 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+                'lastName' => 'required',
+                'firstName' => 'required',
+                'address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'zip' => 'required|numeric|digits:5',
+                'email' => 'required|email|unique:grades,email',
+                'phone' => 'required|numeric|digits:10|unique:grades,phone',
+                'school' => 'required',
+            ]);
+        $grade= new Grade($request->all());
+        $grade->type = 'Grade';
+        $grade->save();
+        return redirect('grades');
     }
 
     /**
@@ -53,7 +78,13 @@ class GradeController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Auth::check()){
+            $grade = Grade::findOrFail($id);
+            return view('grades.show',compact('grade'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -64,7 +95,14 @@ class GradeController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(Auth::check() ){
+            $grade=Grade::find($id);
+            return view('grades.edit',compact('grade'));
+        }
+        else{
+            session()->flash('cust_edit_msg', 'You do not have permissions to edit other grades!.');
+            return redirect('grades');
+        }
     }
 
     /**
@@ -76,7 +114,10 @@ class GradeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $grade= new Grade($request->all());
+        $grade=Grade::find($id);
+        $grade->update($request->all());
+        return redirect('grades');
     }
 
     /**
@@ -87,6 +128,7 @@ class GradeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Grade::find($id)->delete();
+        return redirect('grades');
     }
 }

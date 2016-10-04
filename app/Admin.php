@@ -22,6 +22,14 @@ class Admin extends Model
         return $this->hasMany('App\Employee');
     }
 
+    public function grades() {
+        return $this->hasMany('App\Grade');
+    }
+
+    public function users() {
+        return $this->hasOne('App\User');
+    }
+    
     public function mentors(){
         return $this->hasMany('App\Mentor');
     }

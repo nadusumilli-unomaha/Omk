@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGradesTable extends Migration
+class CreateNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,19 @@ class CreateGradesTable extends Migration
      */
     public function up()
     {
-        Schema::create('grades', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('notes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('subject');
-            $table->string('period');
-            $table->string('actual');
+            $table->string('Description');
+            $table->integer('mentor_id')->unsigned();
+            $table->integer('attendance_id')->unsigned();
             $table->integer('student_id')->unsigned();
-            $table->integer('employee_id')->unsigned();
-            $table->integer('admin_id')->unsigned();
-            $table->string('comments');
             $table->timestamps();
         });
-        
+
         Schema::table('grades', function (Blueprint $table) {
-           $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+           $table->foreign('attendance_id')->references('id')->on('attendances')->onDelete('cascade');
            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-           $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+           $table->foreign('mentor_id')->references('id')->on('mentors')->onDelete('cascade');
         });
     }
 
@@ -40,6 +36,6 @@ class CreateGradesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('notes');
     }
 }

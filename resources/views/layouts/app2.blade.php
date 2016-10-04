@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>Omaha Mentor for Kids</title>
-    <link rel="icon" href="img/OMK.png" type="image/png">
+    <link rel="icon" href="{{ asset('img/OMK.png') }}" type="image/png">
 
     <!-- Bootstrap Core CSS -->
     <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -66,14 +66,14 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <li class="dropdown open">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
                                 <li>
-                                    <a style="color:black" href="{{ url('/logout') }}"
+                                    <a class="dropdown-item" style="color:black" href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         Logout
@@ -81,6 +81,11 @@
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" style="color:black" href="{{ url('/password/reset') }}">
+                                        Reset Password
+                                    </a>
                                 </li>
                             </ul>
                         </li>

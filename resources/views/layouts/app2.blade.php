@@ -38,7 +38,7 @@
 
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
+        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -100,14 +100,10 @@
     <!-- Main Content in the center of the page.-->
     <header>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    {{ HTML::image('img/profile.png', '', array('class' => 'img-responsive')) }}
-                    <!-- <img class="img-responsive" src="img/profile.png" alt=""> -->
-                    <div class="intro-text">
-                        @yield('content')
-                    </div>
-                </div>
+            {{ HTML::image('img/profile.png', '', array('class' => 'img-responsive')) }}
+            <!-- <img class="img-responsive" src="img/profile.png" alt=""> -->
+            <div class="intro-text">
+                @yield('content')
             </div>
         </div>
     </header>

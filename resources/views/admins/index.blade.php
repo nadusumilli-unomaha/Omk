@@ -13,11 +13,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Admin Acess Dashboard</div>
                 <div class="panel-body">                   
-                    <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('AdminController@create')}}">Admins</a>
-                    <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('EmployeeController@index')}}">Employee</a>
-                    <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('MentorController@index')}}">Mentor</a>
-                    <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('AttendanceController@index')}}">Attendance</a>
-                    <a style="margin: 0px 10px 0px 10px;" class="btn btn-primary" href="{{action('GradeController@index')}}">Grade</a>
+                    <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('AdminController@create')}}">Admins</a>
+                    <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('EmployeeController@index')}}">Employee</a>
+                    <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('MentorController@index')}}">Mentor</a>
+                    <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('AttendanceController@index')}}">Attendance</a>
+                    <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('GradeController@index')}}">Grade</a>
                 </div>
             </div>
         </div>
@@ -25,7 +25,8 @@
 
     <!-- The code to list all the students and other people stuff that can admin can see and create.-->
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-9 col-sm-offset-1">    
+        <div class="col-xs-12 col-sm-6 col-md-8 col-md-offset-2">
+        <div class="table-responsive">   
             <table class="table table-bordered table-striped table-hover table-inverse">
                 <thead>
                 <tr class="bg-info">
@@ -65,6 +66,7 @@
                 @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 @endsection

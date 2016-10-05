@@ -24,7 +24,6 @@ class User extends Authenticatable
         'state',
         'zip',
         'phone',
-        'type'
     ];
 
     /**
@@ -38,7 +37,7 @@ class User extends Authenticatable
 
     public function userable()
     {
-        return $this->morphTo();
+        return $this->morphTo('userable');
     }
     
 }

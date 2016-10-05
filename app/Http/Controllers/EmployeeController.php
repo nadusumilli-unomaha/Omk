@@ -37,12 +37,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        if(Auth::check()){
             return view('employees.create');
-        }
-        else{
-            return redirect('/');
-        }
     }
 
     /**

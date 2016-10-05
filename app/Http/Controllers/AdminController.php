@@ -10,8 +10,6 @@ use App\Admin;
 
 use App\User;
 
-use DB;
-
 use Auth; 
 
 use Session;
@@ -41,14 +39,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        if(Auth::check()){
-            $users = DB::table('users')->where('email', Auth::user()->email)->first();
-            $use = User::pluck('email','id');
-            return view('admins.create',compact('users'),compact('use'));
-        }
-        else{
-            return redirect('/');
-        }
+            return view('admins.create');
     }
 
     /**
@@ -68,11 +59,21 @@ class AdminController extends Controller
                 'zip' => 'required|numeric|digits:5',
                 'email' => 'required|email|unique:admins,email',
                 'phone' => 'required|numeric|digits:10|unique:admins,phone',
-                'type' => 'required',
             ]);
-        $admin= new Admin($request->all());
-        $admin->save();
-        return redirect('admins');
+        $user= new User;
+        $user->lastName = $request->lastName;
+        $user->firstName = $request->firstName;
+        $user->address = $request->address;
+        $user->city = $request->city;
+        $user->state = $request->state;
+        $user->zip = $request->zip;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $admin = new Admin;
+        $admin->status = $request->status;
+        $admin->admin_number = $request->admin_number;
+        $admin->user()->save($user);
+        return redirect('home');
     }
 
     /**

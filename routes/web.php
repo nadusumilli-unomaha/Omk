@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/register2', function () {
+    return view('register2');
+});
+Route::get('/validateView', 'ViewController@validateView');
+
 Auth::routes();
 
 Route::resource('students','StudentController');

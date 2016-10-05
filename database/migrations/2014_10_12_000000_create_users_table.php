@@ -26,8 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('state');
             $table->integer('zip');
             $table->string('phone');
-            $table->integer('userable_id');
-            $table->string('userable_type');
+            $table->morphs('userable');
             $table->timestamps();
         });
     }

@@ -6,12 +6,13 @@
             color:black;
         }
     </style>
-    <div class="col-md-4 col-md-offset-4">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4">
     	<a class="btn btn-primary pull-right" style="margin: 10px 10px 10px 10px;" href="{{ action('AdminController@index') }}">Go Back</a></br>
         <h1 style="color:black; margin: 0px 0px 0px 100px;">Admin</h1>
         <table class="table table-striped table-bordered table-hover">
             <tbody>
-                <tr class="bg-info">
+                <tr class="bg-info"/>
                 <tr>
                     <td>Last Name</td>
                     <td><?php echo ($admin['lastName']); ?></td>
@@ -41,10 +42,11 @@
                     <td><?php echo ($admin['phone']); ?></td>
                 </tr>
                 <tr>
-                    <td>School</td>
-                    <td><?php echo ($admin['school']); ?></td>
+                    <td>Type</td>
+                    <td><?php echo ($admin['type']); ?></td>
                 </tr>
             </tbody>
         </table>
+    </div>
     </div>
 @endsection

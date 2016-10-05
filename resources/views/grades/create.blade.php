@@ -1,8 +1,9 @@
 @extends('layouts.app2')
 
 @section('content')
-        <a class="btn btn-primary pull-right" style="margin: 10px 10px 10px 10px;" href="{{ URL::previous() }}">Go Back</a>
-        <div class="col-lg-6" style="margin: 0px 0px 0px 280px;">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4">
+        <a class="btn btn-primary" style="margin: 10px 10px 10px 900px;" href="{{ URL::previous() }}">Go Back</a>
         <div class="panel panel-default ">
             <div class="panel-heading"><strong>New Admin</strong></div>
             <div class="panel-body">
@@ -103,14 +104,14 @@
 			            @endif
 		            </div>
 		        </div>
-		        <div class="form-group floating-label-form-group controls {{ $errors->has('school') ? ' has-error has-feedback' : '' }}">
-		            {!! Form::label('school', 'School:',['class'=>'col-md-4 control-label']) !!}
+		        <div class="form-group floating-label-form-group controls {{ $errors->has('type') ? ' has-error has-feedback' : '' }}">
+		            {!! Form::label('type', 'Type:',['class'=>'col-md-4 control-label']) !!}
 		            <div class="col-md-14">
-			            {!! Form::text('school',null,['class'=>'form-control','placeholder'=>'School','data-validation-required-message']) !!}
+			            {!! Form::text('type',null,['class'=>'form-control','placeholder'=>'Type','data-validation-required-message']) !!}
 			            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			            @if ($errors->has('school'))
+			            @if ($errors->has('type'))
 			                <span class="help-block">
-			                    <strong>{{ $errors->first('school') }}</strong>
+			                    <strong>{{ $errors->first('type') }}</strong>
 			                </span>
 			            @endif
 		            </div>
@@ -124,5 +125,6 @@
 		        {!! Form::close() !!}
             </div>
         </div>
+    </div>
     </div>
 @endsection

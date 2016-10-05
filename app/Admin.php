@@ -7,16 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Model
 {
     protected $fillable=[
-        'lastName',
-        'firstName',
-        'address',
-        'city',
-        'state',
-        'zip',
-        'email',
-        'phone',
-        'type',
-        'user_id'
+        'status',
+        'admin_number'
     ];
     
     public function employees() {

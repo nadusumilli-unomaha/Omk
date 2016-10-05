@@ -37,12 +37,7 @@ class MentorController extends Controller
      */
     public function create()
     {
-        if(Auth::check()){
             return view('mentors.create');
-        }
-        else{
-            return redirect('/');
-        }
     }
 
     /**

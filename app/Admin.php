@@ -15,7 +15,8 @@ class Admin extends Model
         'zip',
         'email',
         'phone',
-        'school',
+        'type',
+        'user_id'
     ];
     
     public function employees() {
@@ -25,12 +26,13 @@ class Admin extends Model
     public function grades() {
         return $this->hasMany('App\Grade');
     }
-
-    public function users() {
-        return $this->hasOne('App\User');
-    }
     
     public function mentors(){
         return $this->hasMany('App\Mentor');
+    }
+
+    public function user()
+    {
+        return $this->morphOne('App\User', 'userable');
     }
 }

@@ -26,7 +26,8 @@ class Employee extends Model
         return $this->hasMany('App\Mentor');
     }
 
-    public function users() {
-        return $this->hasOne('App\User');
+    public function user()
+    {
+        return $this->morphOne('App\User', 'userable');
     }
 }

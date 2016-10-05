@@ -83,7 +83,7 @@
                                     </form>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" style="color:black" href="{{ url('/password/reset') }}">
+                                    <a class="dropdown-item" style="color:black" href="{{ url('/password/reset/') }}">
                                         Reset Password
                                     </a>
                                 </li>

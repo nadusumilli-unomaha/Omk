@@ -16,17 +16,10 @@ class CreateMentorsTable extends Migration
         Schema::create('mentors', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('lastName');
-            $table->string('firstName');
             $table->integer('admin_id')->unsigned();
             $table->integer('employee_id')->unsigned();
-            $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->integer('zip');
-            $table->string('email');
-            $table->integer('phone');
-            $table->string('type');
+            $table->string('status');
+            $table->string('mentor_number');
             $table->timestamps();
         });
 

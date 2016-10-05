@@ -16,15 +16,8 @@ class CreateAdminsTable extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('lastName');
-            $table->string('firstName');
-            $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->integer('zip');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('type');
+            $table->string('status');
+            $table->integer('admin_number');
             $table->timestamps();
         });
     }

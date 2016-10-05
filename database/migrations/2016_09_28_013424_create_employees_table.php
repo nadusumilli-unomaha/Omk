@@ -16,17 +16,9 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('admin_id')->unsigned();
-            $table->string('lastName');
-            $table->string('firstName');
-            $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->integer('zip');
-            $table->string('email');
-            $table->integer('phone');
-            $table->string('status');
             $table->string('type');
+            $table->string('employee_number');
+            $table->integer('admin_id')->unsigned();
             $table->timestamps();
         });
         

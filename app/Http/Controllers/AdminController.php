@@ -8,6 +8,10 @@ use App\Http\Requests;
 
 use App\Admin;
 
+use App\User;
+
+use DB;
+
 use Auth; 
 
 use Session;
@@ -38,7 +42,9 @@ class AdminController extends Controller
     public function create()
     {
         if(Auth::check()){
-            return view('admins.create');
+            $users = DB::table('users')->where('email', Auth::user()->email)->first();
+            $use = User::pluck('email','id');
+            return view('admins.create',compact('users'),compact('use'));
         }
         else{
             return redirect('/');
@@ -62,10 +68,9 @@ class AdminController extends Controller
                 'zip' => 'required|numeric|digits:5',
                 'email' => 'required|email|unique:admins,email',
                 'phone' => 'required|numeric|digits:10|unique:admins,phone',
-                'school' => 'required',
+                'type' => 'required',
             ]);
         $admin= new Admin($request->all());
-        $admin->type = 'Admin';
         $admin->save();
         return redirect('admins');
     }

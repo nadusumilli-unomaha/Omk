@@ -38,7 +38,7 @@
                     <th>Zip</th>
                     <th>Primary Email</th>
                     <th>phone</th>
-                    <th>school</th>
+                    <th>Type</th>
                     <th colspan="3">Actions</th>
                 </tr>
                 </thead>
@@ -53,7 +53,7 @@
                             <td>{{ $admin->zip }}</td>
                             <td>{{ $admin->email }}</td>
                             <td>{{ $admin->phone }}</td>
-                            <td>{{ $admin->school }}</td>
+                            <td>{{ $admin->type }}</td>
                             <td><a href="{{url('admins',$admin->id)}}" class="btn btn-primary">Read</a></td>
                             <td><a href="{{route('admins.edit',$admin->id)}}" class="btn btn-warning">Update</a></td>
                             <td>

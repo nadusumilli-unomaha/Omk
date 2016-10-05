@@ -14,6 +14,7 @@ class CreateNotesTable extends Migration
     public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('Description');
             $table->integer('mentor_id')->unsigned();
@@ -22,7 +23,7 @@ class CreateNotesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('grades', function (Blueprint $table) {
+        Schema::table('notes', function (Blueprint $table) {
            $table->foreign('attendance_id')->references('id')->on('attendances')->onDelete('cascade');
            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
            $table->foreign('mentor_id')->references('id')->on('mentors')->onDelete('cascade');

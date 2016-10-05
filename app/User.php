@@ -15,7 +15,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'lastName',
+        'address',
+        'city',
+        'state',
+        'zip',
+        'phone',
+        'type'
     ];
 
     /**
@@ -27,16 +36,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function admins() {
-        return $this->belongsTo('App\Admin');
-    }
-
-    public function employees() {
-        return $this->belongsTo('App\Employee');
-    }
-
-    public function mentors() {
-        return $this->belongsTo('App\Mentor');
+    public function userable()
+    {
+        return $this->morphTo();
     }
     
 }

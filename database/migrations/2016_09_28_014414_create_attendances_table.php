@@ -20,7 +20,6 @@ class CreateAttendancesTable extends Migration
             $table->integer('student_id')->unsigned();
             $table->integer('employee_id')->unsigned();
             $table->integer('admin_id')->unsigned();
-            $table->integer('notificaiton_id')->unsigned();
             $table->string('check');
             $table->date('Date');
             $table->timestamps();
@@ -31,7 +30,6 @@ class CreateAttendancesTable extends Migration
            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
-           $table->foreign('notificaiton_id')->references('id')->on('notificaitons')->onDelete('cascade');
            //add notes to this part.
         });
     }

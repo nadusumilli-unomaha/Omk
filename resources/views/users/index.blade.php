@@ -72,7 +72,7 @@
                                 <td><input type="checkbox" {{ $user->hasRole('Employee')  ? 'checked' : ''}} name="role_employee"></td>
                                 <td><input type="checkbox" {{ $user->hasRole('Mentor')  ? 'checked' : ''}} name="role_mentor"></td>
                                 {{csrf_field()}}
-                                <td><button type="submit">Assign Roles</button></td>
+                                <td><button class="btn btn-primary" type="submit">Assign Roles</button></td>
                                 @foreach ($user->roles[0]->permissions as $permission)
                                     <td>{{ $permission->name }}</td>
                                 @endforeach

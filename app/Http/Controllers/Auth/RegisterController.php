@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -48,7 +49,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'firstName' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -62,17 +63,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'lastName' => $data['lastName'],
-            'address' => $data['address'],
-            'city' => $data['city'],
-            'state' => $data['state'],
-            'zip' => $data['zip'],
-            'phone' => $data['phone'],
-            'type' => $data['type']
-        ]);
+        $user = new User;
+        $user->firstName = $data['firstName'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->lastName = $data['lastName'];
+        $user->address = $data['address'];
+        $user->city = $data['city'];
+        $user->state = $data['state'];
+        $user->zip = $data['zip'];
+        $user->phone = $data['phone'];
+        $user->save();
+        $user->roles()->attach(Role::where('name',$data['role'])->first());
+        return $user;
     }
 }

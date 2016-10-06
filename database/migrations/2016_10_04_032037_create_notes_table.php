@@ -17,7 +17,7 @@ class CreateNotesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('Description');
-            $table->integer('mentor_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('attendance_id')->unsigned();
             $table->integer('student_id')->unsigned();
             $table->timestamps();
@@ -26,7 +26,7 @@ class CreateNotesTable extends Migration
         Schema::table('notes', function (Blueprint $table) {
            $table->foreign('attendance_id')->references('id')->on('attendances')->onDelete('cascade');
            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-           $table->foreign('mentor_id')->references('id')->on('mentors')->onDelete('cascade');
+           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -27,16 +27,12 @@ class CreateStudentsTable extends Migration
             $table->string('email');
             $table->integer('phone');
             $table->string('school');
-            $table->integer('admin_id')->unsigned();
-            $table->integer('employee_id')->unsigned();
-            $table->integer('mentor_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('students', function (Blueprint $table) {
-           $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
-           $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
-           $table->foreign('mentor_id')->references('id')->on('mentors')->onDelete('cascade');
+           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

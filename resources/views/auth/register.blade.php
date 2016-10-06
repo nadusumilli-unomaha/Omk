@@ -5,18 +5,34 @@
         <div class="panel panel-default ">
             <div class="panel-heading"><strong>Register</strong></div>
             <div class="panel-body">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                <form class="form-horizontal" role="form" id="#adminRegisteration" method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
 
-                    <div class="form-group floating-label-form-group controls {{ $errors->has('name') ? ' has-error' : '' }}">
-                        <label  for="name" class="col-md-4 control-label" style="color:#2c3e50;">Name</label>
+                    <div class="form-group floating-label-form-group controls {{ $errors->has('role') ? ' has-error' : '' }}">
+                        <label  for="role" class="col-md-4 control-label" style="color:#2c3e50;">Role</label>
 
                         <div class="col-md-14">
-                            <input id="name" type="text" class="form-control" name="name" placeholder="Name"  value="{{ old('name') }}" required autofocus>
-
-                            @if ($errors->has('name'))
+                            <select id="role" class="form-control" name="role" value="{{ old('role') }}" required autofocus>
+                                <option value="Employee">Employee</option>
+                                <option value="Mentor" selected>Mentor</option>
+                            </select>
+                            @if ($errors->has('role'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('name') }}</strong>
+                                    <strong>{{ $errors->first('role') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group floating-label-form-group controls {{ $errors->has('firstName') ? ' has-error' : '' }}">
+                        <label  for="firstName" class="col-md-4 control-label" style="color:#2c3e50;">First Name</label>
+
+                        <div class="col-md-14">
+                            <input id="firstName" type="text" class="form-control" name="firstName" placeholder="First Name"  value="{{ old('firstName') }}" required autofocus>
+
+                            @if ($errors->has('firstName'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('firstName') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -115,20 +131,6 @@
                             @if ($errors->has('phone'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('phone') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group floating-label-form-group controls {{ $errors->has('type') ? ' has-error' : '' }}">
-                        <label for="type" class="col-md-4 control-label" style="color:#2c3e50#2c3e50;">Type</label>
-
-                        <div class="col-md-14">
-                            <input id="type" type="type" class="form-control" name="type"  placeholder="Type"  value="{{ old('type') }}" required>
-
-                            @if ($errors->has('type'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('type') }}</strong>
                                 </span>
                             @endif
                         </div>

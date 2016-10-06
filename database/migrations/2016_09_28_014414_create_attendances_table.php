@@ -16,20 +16,16 @@ class CreateAttendancesTable extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('mentor_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('student_id')->unsigned();
-            $table->integer('employee_id')->unsigned();
-            $table->integer('admin_id')->unsigned();
             $table->string('check');
             $table->date('Date');
             $table->timestamps();
         });
         
         Schema::table('attendances', function (Blueprint $table) {
-           $table->foreign('mentor_id')->references('id')->on('mentors')->onDelete('cascade');
-           $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-           $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
            //add notes to this part.
         });
     }

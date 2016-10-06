@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminsTable extends Migration
+class CreateUserRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('user_role', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('status');
-            $table->integer('admin_number');
             $table->timestamps();
+            $table->integer('user_id');
+            $table->integer('role_id');
         });
     }
 
@@ -29,6 +28,6 @@ class CreateAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('admins');
+        Schema::drop('user_role');
     }
 }

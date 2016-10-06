@@ -64,11 +64,11 @@
                     </li>
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register2') }}">Register</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="dropdown-submenu">
                             <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->firstName }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
@@ -83,7 +83,7 @@
                                     </form>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" style="color:black" href="{{ url('/password/reset/') }}">
+                                    <a class="dropdown-item" style="color:black"  href="{{ url('/password/reset/') }}">
                                         Reset Password
                                     </a>
                                 </li>

@@ -21,14 +21,12 @@ class CreateGradesTable extends Migration
             $table->string('actual');
             $table->string('comments');
             $table->integer('student_id')->unsigned();
-            $table->integer('employee_id')->unsigned();
-            $table->integer('admin_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('grades', function (Blueprint $table) {
-           $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
-           $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }

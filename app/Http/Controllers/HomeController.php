@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,41 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = User::where('email', Auth::user()->email)->first();//First is required because without first you get a collection and you cannot roles() on a collection.
+        foreach ($user->roles as $role) {
+            if($role->name === 'Mentor')
+            {
+                return view('users.RegistrationSuccess', compact('user'));
+            }
+            else if($role->name === 'Employee')
+            {
+                return view('users.RegistrationSuccess', compact('user'));
+            }
+            else
+            {            
+                $users = User::all();
+                return view('home',compact('users'));
+            }
+        }
     }
 
+    public function afterLogin()
+    {
+        $user = User::where('email', Auth::user()->email)->first();//First is required because without first you get a collection and you cannot roles() on a collection.
+        foreach ($user->roles as $role) {
+            if($role->name === 'Mentor')
+            {
+                return view('users.afterLogin', compact('user'));
+            }
+            else if($role->name === 'Employee')
+            {
+                return view('users.afterLogin', compact('user'));
+            }
+            else
+            {            
+                $users = User::all();
+                return view('home',compact('users'));
+            }
+        }
+    }
 }

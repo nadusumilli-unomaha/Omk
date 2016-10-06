@@ -5,16 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
-use App\Admin;
-
 use App\User;
+use App\Role;
+use Auth;
 
-use Auth; 
-
-use Session;
-
-class AdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,8 +19,8 @@ class AdminController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $admins=Admin::all();
-            return view('admins.index',compact('admins'));
+            $users=User::all();
+            return view('users.index',compact('users'));
         }
         else{
             return redirect('/');
@@ -39,7 +34,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-            return view('admins.create');
+            return view('users.create');
     }
 
     /**
@@ -57,22 +52,10 @@ class AdminController extends Controller
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required|numeric|digits:5',
-                'email' => 'required|email|unique:admins,email',
-                'phone' => 'required|numeric|digits:10|unique:admins,phone',
+                'email' => 'required|email|unique:users,email',
+                'phone' => 'required|numeric|digits:10|unique:users,phone',
             ]);
-        $user= new User;
-        $user->lastName = $request->lastName;
-        $user->firstName = $request->firstName;
-        $user->address = $request->address;
-        $user->city = $request->city;
-        $user->state = $request->state;
-        $user->zip = $request->zip;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $admin = new Admin;
-        $admin->status = $request->status;
-        $admin->admin_number = $request->admin_number;
-        $admin->user()->save($user);
+        $user= new User($request->all());
         return redirect('home');
     }
 
@@ -85,8 +68,8 @@ class AdminController extends Controller
     public function show($id)
     {
         if(Auth::check()){
-            $admin = Admin::findOrFail($id);
-            return view('admins.show',compact('admin'));
+            $user = User::findOrFail($id);
+            return view('users.show',compact('user'));
         }
         else{
             return redirect('/');
@@ -102,12 +85,12 @@ class AdminController extends Controller
     public function edit($id)
     {
         if(Auth::check() ){
-            $admin=Admin::find($id);
-            return view('admins.edit',compact('admin'));
+            $user=User::find($id);
+            return view('users.edit',compact('user'));
         }
         else{
-            session()->flash('cust_edit_msg', 'You do not have permissions to edit other admins!.');
-            return redirect('admins');
+            session()->flash('cust_edit_msg', 'You do not have permissions to edit other users!.');
+            return redirect('users');
         }
     }
 
@@ -120,10 +103,10 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $admin= new Admin($request->all());
-        $admin=Admin::find($id);
-        $admin->update($request->all());
-        return redirect('admins');
+        $user= new User($request->all());
+        $user=User::find($id);
+        $user->update($request->all());
+        return redirect('users');
     }
 
     /**
@@ -134,7 +117,36 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        Admin::find($id)->delete();
-        return redirect('admins');
+        User::find($id)->delete();
+        return redirect('users');
+    }
+
+    public function postAdminAssignRoles(Request $request)
+    {
+        $user = User::where('email', $request['email'])->first();
+        $user->roles()->detach();
+        if($request['role_admin']){
+            $user->roles()->attach(Role::where('name','Admin')->first());
+        }
+        if($request['role_employee']){
+            $user->roles()->attach(Role::where('name','Employee')->first());
+        }
+        if($request['role_mentor']){
+            $user->roles()->attach(Role::where('name','Mentor')->first());
+        }
+        return redirect()->back();
+    }
+
+    public function mentorDisplay()
+    {
+        $user = User::where('email', Auth::user()->email)->firstOrFail();
+        return view('users.mentorDisplay', compact('user'));
+    }
+
+
+    public function employeeDisplay()
+    {
+        $user = User::where('email', Auth::user()->email)->firstOrFail();
+        return view('users.employeeDisplay', compact('user'));
     }
 }

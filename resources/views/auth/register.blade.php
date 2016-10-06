@@ -1,7 +1,7 @@
 @extends('layouts.app2')
 
 @section('content')
-    <div class="col-xs-12 col-sm-6 col-md-4" style="margin: 0px 0px 0px 383px;">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4" >
         <div class="panel panel-default ">
             <div class="panel-heading"><strong>Register</strong></div>
             <div class="panel-body">

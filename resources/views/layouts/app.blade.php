@@ -10,16 +10,18 @@
     <meta name="author" content="">
 
     <title>Omaha Mentor for Kids</title>
-    <link rel="icon" href="img/OMK.png" type="image/png">
+    <link rel="icon" href="{{ asset('img/OMK.png') }}" type="image/png">
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    {{Html::style('vendor/bootstrap/css/bootstrap.min.css')}}
     <!-- Theme CSS -->
-    <link href="css/freelancer.min.css" rel="stylesheet">
+    <!-- <link href="css/freelancer.min.css" rel="stylesheet"> -->
+    {{Html::style('css/freelancer.min.css')}}
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    {{Html::style('vendor/font-awesome/css/font-awesome.min.css')}}
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -380,20 +382,25 @@
     </div>
     
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+    {{Html::script('vendor/jquery/jquery.min.js')}}
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
+    {{Html::script('vendor/bootstrap/js/bootstrap.min.js')}}
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
     <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+    {{Html::script('js/jqBootstrapValidation.js')}}
+    <!-- <script src="js/jqBootstrapValidation.js"></script> -->
+    {{Html::script('js/contact_me.js')}}
+    <!-- <script src="js/contact_me.js"></script> -->
 
     <!-- Theme JavaScript -->
-    <script src="js/freelancer.min.js"></script>
+    {{Html::script('js/freelancer.min.js')}}
+    <!-- <script src="js/freelancer.min.js"></script> -->
 
 </body>
 

@@ -54,3 +54,10 @@ Route::post('assign', [
     'uses' => 'UserController@postAdminAssignRoles',
     'before' => 'guest'
 ]);
+
+
+
+//Wildcard Route.
+Route::get('/{any}', function ($any) {
+	return redirect('/');
+})->where('any', '.*');

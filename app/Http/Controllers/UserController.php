@@ -103,10 +103,28 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user= new User($request->all());
-        $user=User::find($id);
-        $user->update($request->all());
-        return redirect('users');
+        $this->validate($request,[
+                'lastName' => 'required',
+                'firstName' => 'required',
+                'address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'zip' => 'required|numeric|digits:5',
+                'email' => 'required|email',
+                'phone' => 'required|numeric|digits:10',
+        ]);
+        $user1=User::find($id);
+        $user1->firstName = $request->firstName;
+        $user1->email = $request->email;
+        $user1->password = $user1->password;
+        $user1->lastName = $request->lastName;
+        $user1->address = $request->address;
+        $user1->city = $request->city;
+        $user1->state = $request->state;
+        $user1->zip = $request->zip;
+        $user1->phone = $request->phone;
+        $user1->update();
+        return redirect('users.afterLogin');
     }
 
     /**

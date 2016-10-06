@@ -417,7 +417,66 @@
     <!-- <script src="js/freelancer.min.js"></script> -->
 </body>
     <script type="text/javascript">
-        $("[name='my-checkbox']").bootstrapSwitch();
+        $(document).ready(function() {
+            //###########################################################################
+            //####                The Defenitions for JS Code.                       ####
+            //###########################################################################
+            var $myRadioGroup = $('#myRadioGroup');
+            var $mentorToggle1 = $('#mentorToggle1');
+            var $mentorToggle2 = $('#mentorToggle2');
+
+
+            //###########################################################################
+            //####    The JavaScript to Handle Employee Radio Button Event on Divs.  ####
+            //###########################################################################
+            $("input[name=mentorToggle]:radio").change(function () {
+                $('#mentorToggle2').css('visibility', 'visible')
+                if ($(this).val() == '1') {
+                    $('#mentorToggle1').css('display', 'block');
+                    $('#mentorToggle2').css('display', 'none');
+                    $('#log').val('This is 1. || ');
+                }
+                else if($(this).val() == '2'){
+                    $('#mentorToggle2').css('display', 'block');
+                    $('#mentorToggle1').css('display', 'none');
+                    $('#log').val("This is 2. || ");
+                }
+            })
+            //###########################################################################
+            //####                     The End of Mentor JS.                         ####
+            //###########################################################################
+            
+            //###########################################################################
+            //####    The JavaScript to Handle Employee Radio Button Event on Divs.  ####
+            //###########################################################################
+            $("input[name=employeeToggle]:radio").change(function () {
+                $('#employeeToggle2').css('visibility', 'visible')
+                $('#employeeToggle3').css('visibility', 'visible')
+                if ($(this).val() == '1') {
+                    $('#employeeToggle1').css('display', 'block');
+                    $('#employeeToggle2').css('display', 'none');
+                    $('#employeeToggle3').css('display', 'none');
+                    $('#log').val('This is 1. || ');
+                }
+                else if($(this).val() == '2'){
+                    $('#employeeToggle1').css('display', 'none');
+                    $('#employeeToggle2').css('display', 'block');
+                    $('#employeeToggle3').css('display', 'none');
+                    $('#log').val("This is 2. || ");
+                }
+                else if($(this).val() == '3'){
+                    $('#employeeToggle1').css('display', 'none');
+                    $('#employeeToggle2').css('display', 'none');
+                    $('#employeeToggle3').css('display', 'block');
+                    $('#log').val("This is 2. || ");
+                }
+            })
+            //###########################################################################
+            //####                     The End of Employee JS.                       ####
+            //###########################################################################
+
+            $("[name='my-checkbox']").bootstrapSwitch();
+        });
     </script>
 
 </html>

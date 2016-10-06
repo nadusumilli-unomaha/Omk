@@ -54,7 +54,11 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a class="glyphicon glyphicon-home" href="{{ url('/home') }}"> Home</a>
+                        @if(Auth::Check())
+                            <a class="glyphicon glyphicon-home" href="{{ url('/afterLogin') }}"> Home</a>
+                        @else
+                            <a class="glyphicon glyphicon-home" href="{{ url('/home') }}"> Home</a>
+                        @endif
                     </li>
                     <li class="page-scroll">
                         <a href="#portfolio">Portfolio</a>

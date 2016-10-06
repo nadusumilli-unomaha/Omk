@@ -28,6 +28,9 @@ Auth::routes();
 	Route::resource('notifications','NotificationController',['only'=>'index']);
 });*/
 
+Route::resource('users','UserController',['only'=>'edit']);
+Route::resource('users','UserController',['only'=>'update']);
+
 Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
 {
 	Route::resource('users','UserController',['only'=>'index']);

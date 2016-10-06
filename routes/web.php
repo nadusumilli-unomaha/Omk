@@ -15,11 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register2', function () {
-    return view('register2');
-});
-Route::get('/validateView', 'ViewController@validateView');
-
 Auth::routes();
 
 //The below is how we can restrict access to defenitive users. Create a group and define access.
@@ -38,6 +33,7 @@ Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
 	Route::resource('users','UserController',['only'=>'index']);
 });
 
+Route::get('/validateView', 'ViewController@validateView');
 Route::resource('students','StudentController');
 //Route::resource('users','UserController');
 Route::resource('attendances','AttendanceController');

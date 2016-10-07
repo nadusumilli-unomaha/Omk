@@ -19,7 +19,7 @@
                 <div class="panel-heading">Admin Acess Dashboard</div>
                 <div class="panel-body">
                     <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('UserController@index')}}">User</a>
-                    <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('VisitorController@index')}}">Visitor</a>
+                    <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('VisitController@index')}}">Visitor</a>
                     <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('GradeController@index')}}">Grade</a>
                 </div>
             </div>

@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-
+use App\User;
 use App\Student;
+use Auth;
 
-use Auth; 
-
-use Session;
+use App\Http\Requests;
 
 class StudentController extends Controller
 {
@@ -38,7 +36,8 @@ class StudentController extends Controller
     public function create()
     {
         if(Auth::check()){
-            return view('students.create');
+            $users = User::pluck('firstName','id');
+            return view('students.create',compact('users'));
         }
         else{
             return redirect('/');
@@ -53,20 +52,22 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        /*$this->validate($request,[
-                'name' => 'required|unique:students,name',
+        $this->validate($request,[
+                'lastName' => 'required',
+                'firstName' => 'required|unique:students,firstName',
+                'dob' => 'required',
+                'gender' => 'required',
                 'address' => 'required',
-                'cust_number' => 'required|numeric',
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required|numeric|digits:5',
                 'email' => 'required|email|unique:students,email',
-                'home_phone' => 'numeric|digits:10|unique:students,home_phone',
-                'cell_phone' => 'required|numeric|digits:10|unique:students,cell_phone',
-            ]);*/
+                'phone' => 'numeric|digits:10|unique:students,phone',
+                'school' => 'required',
+            ]);
         $student= new Student($request->all());
         $student->save();
-        return redirect('students');
+        return redirect('/afterLogin');
     }
 
     /**
@@ -94,7 +95,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        if((Auth::check() && Session::get("login_id") == $id) || Auth::user()->email == 'admin@admin.com'){
+        if(Auth::check()){
             $student=Student::find($id);
             return view('students.edit',compact('student'));
         }

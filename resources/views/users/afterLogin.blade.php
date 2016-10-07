@@ -73,7 +73,7 @@
             visibility: hidden;
         }
 
-        td{
+        td, th{
         	color:black;
         }
 	</style>
@@ -150,12 +150,45 @@
 						</div>
 						<div id="mentorToggle2" class="mentorProfile">
 							<h1>Student Profile</h1>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							<div style="color:black;">
+								<table class="table table-bordered table-striped table-hover table-inverse">
+					                <thead>
+					                <tr class="bg-info">
+					                    <th>Last Name</th>
+					                    <th>First Name</th>
+					                    <th>Current Address</th>
+					                    <th>City</th>
+					                    <th>State</th>
+					                    <th>Zip</th>
+					                    <th>Primary Email</th>
+					                    <th>Phone</th>
+					                    <th>Date of Birth</th>
+					                    <th>Gender</th>
+					                    <th>School</th>
+					                    <th>Actions</th>
+					                </tr>
+					                </thead>
+					                <tbody>
+					                @foreach ($students as $student)
+					                    <tr>
+			                                <td>{{ $student->lastName }}</td>
+			                                <td>{{ $student->firstName }}</td>
+			                                <td>{{ $student->address }}</td>
+			                                <td>{{ $student->city }}</td>
+			                                <td>{{ $student->state }}</td>
+			                                <td>{{ $student->zip }}</td>
+			                                <td>{{ $student->email }}</td> 
+			                                <td>{{ $student->phone }}</td>
+			                                <td>{{ $student->dob }}</td>
+			                                <td>{{ $student->gender }}</td>
+			                                <td>{{ $student->school }}</td>
+											<td><a class="btn btn-primary" href="{{ route('students.show',$student->id) }}">Show</a></td>
+					                    </tr>
+					                @endforeach
+					                <hr/>
+					                </tbody>
+					            </table>
+							</div>
 						</div>
 					</div>
 				@endif
@@ -182,22 +215,80 @@
 						</div>
 						<div id="employeeToggle1" class="employeeProfile">
 							<h1>Student Profile</h1>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							<a class="btn btn-primary" href="{{ action('StudentController@create') }}">Create a Student</a><br/>
+								<table class="table table-bordered table-striped table-hover table-inverse">
+					                <thead>
+					                <tr class="bg-info">
+					                    <th>Last Name</th>
+					                    <th>First Name</th>
+					                    <th>Current Address</th>
+					                    <th>City</th>
+					                    <th>State</th>
+					                    <th>Zip</th>
+					                    <th>Primary Email</th>
+					                    <th>Phone</th>
+					                    <th>Date of Birth</th>
+					                    <th>Gender</th>
+					                    <th>School</th>
+					                    <th>Actions</th>
+					                </tr>
+					                </thead>
+					                <tbody>
+					                @foreach ($students as $student)
+					                    <tr>
+			                                <td>{{ $student->lastName }}</td>
+			                                <td>{{ $student->firstName }}</td>
+			                                <td>{{ $student->address }}</td>
+			                                <td>{{ $student->city }}</td>
+			                                <td>{{ $student->state }}</td>
+			                                <td>{{ $student->zip }}</td>
+			                                <td>{{ $student->email }}</td> 
+			                                <td>{{ $student->phone }}</td>
+			                                <td>{{ $student->dob }}</td>
+			                                <td>{{ $student->gender }}</td>
+			                                <td>{{ $student->school }}</td>
+											<td><a class="btn btn-primary" href="{{ route('students.edit',$student->id) }}">Update</a></td>
+					                    </tr>
+					                @endforeach
+					                <hr/>
+					                </tbody>
+					            </table>
 						</div>
 
 						<div id="employeeToggle2" class="employeeProfile">
 							<h1>Mentor Profile</h1>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							<a class="btn btn-primary" href="{{ action('UserController@create') }}">Create a User</a><br/>
+							<table class="table table-bordered table-striped table-hover table-inverse">
+					                <thead>
+					                <tr class="bg-info">
+					                    <th>Last Name</th>
+					                    <th>First Name</th>
+					                    <th>Current Address</th>
+					                    <th>City</th>
+					                    <th>State</th>
+					                    <th>Zip</th>
+					                    <th>Primary Email</th>
+					                    <th>Phone</th>
+					                    <th>Actions</th>
+					                </tr>
+					                </thead>
+					                <tbody>
+					                @foreach ($mentors as $mentor)
+					                    <tr>
+			                                <td>{{ $mentor->lastName }}</td>
+			                                <td>{{ $mentor->firstName }}</td>
+			                                <td>{{ $mentor->address }}</td>
+			                                <td>{{ $mentor->city }}</td>
+			                                <td>{{ $mentor->state }}</td>
+			                                <td>{{ $mentor->zip }}</td>
+			                                <td>{{ $mentor->email }}</td> 
+			                                <td>{{ $mentor->phone }}</td>
+											<td><a class="btn btn-primary" href="{{ route('users.edit',$mentor->id) }}">Update</a></td>
+					                    </tr>
+					                @endforeach
+					                <hr/>
+					                </tbody>
+					            </table>
 						</div>
 
 						<div id="employeeToggle3" class="employeeProfile">

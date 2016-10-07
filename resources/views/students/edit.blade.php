@@ -5,7 +5,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4">
         <a class="btn btn-primary" style="margin: 0px 0px 0px 900px;" href="{{ URL::previous() }}">Go Back</a>
         <div class="panel panel-default ">
-            <div class="panel-heading"><strong>Update Admin</strong></div>
+            <div class="panel-heading"><strong>Update Student</strong></div>
             <div class="panel-body">
     			{!! Form::model($student,['method' => 'PATCH','route'=>['students.update',$student->id]]) !!}
 		        <div class="form-group floating-label-form-group controls {{ $errors->has('lastName') ? ' has-error has-feedback' : '' }}">

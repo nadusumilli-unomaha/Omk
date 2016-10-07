@@ -18,6 +18,7 @@ class Student extends Model
         'email',
         'phone',
         'school',
+        'user_id',
     ];
 
     public function users() {
@@ -25,6 +26,6 @@ class Student extends Model
     }
 
     public function grades() {
-        return $this->hasMany('App\Grade');
+        return $this->hasMany('App\Grade'); 
     }
 }

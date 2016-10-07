@@ -8,6 +8,9 @@
             <div class="panel-heading"><strong>New Admin</strong></div>
             <div class="panel-body">
 		        {!! Form::open(['url' => 'students', 'class'=>'form-horizontal', 'role'=>'form']) !!}
+		        <div style="color:black;">
+                {!! Form::select('user_id', $users) !!}
+                </div>
 		        <div class="form-group floating-label-form-group controls {{ $errors->has('lastName') ? ' has-error has-feedback' : '' }}">
 		            {!! Form::label('lastName', 'Last Name:',['class'=>'col-md-4 control-label']) !!}
 		            <div class="col-md-14">
@@ -104,14 +107,38 @@
 			            @endif
 		            </div>
 		        </div>
-		        <div class="form-group floating-label-form-group controls {{ $errors->has('type') ? ' has-error has-feedback' : '' }}">
-		            {!! Form::label('type', 'Type:',['class'=>'col-md-4 control-label']) !!}
+		        <div class="form-group floating-label-form-group controls {{ $errors->has('school') ? ' has-error has-feedback' : '' }}">
+		            {!! Form::label('school', 'School:',['class'=>'col-md-4 control-label']) !!}
 		            <div class="col-md-14">
-			            {!! Form::text('type',null,['class'=>'form-control','placeholder'=>'Type','data-validation-required-message']) !!}
+			            {!! Form::text('school',null,['class'=>'form-control','placeholder'=>'School','data-validation-required-message']) !!}
 			            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			            @if ($errors->has('type'))
+			            @if ($errors->has('school'))
 			                <span class="help-block">
-			                    <strong>{{ $errors->first('type') }}</strong>
+			                    <strong>{{ $errors->first('school') }}</strong>
+			                </span>
+			            @endif
+		            </div>
+		        </div>
+		        <div class="form-group floating-label-form-group controls {{ $errors->has('dob') ? ' has-error has-feedback' : '' }}">
+		            {!! Form::label('dob', 'Date Of Birth:',['class'=>'col-md-4 control-label']) !!}
+		            <div class="col-md-14">
+			            {!! Form::text('dob',null,['class'=>'form-control','placeholder'=>'Date Of Birth','data-validation-required-message']) !!}
+			            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+			            @if ($errors->has('dob'))
+			                <span class="help-block">
+			                    <strong>{{ $errors->first('dob') }}</strong>
+			                </span>
+			            @endif
+		            </div>
+		        </div>
+		        <div class="form-group floating-label-form-group controls {{ $errors->has('gender') ? ' has-error has-feedback' : '' }}">
+		            {!! Form::label('gender', 'Gender:',['class'=>'col-md-4 control-label']) !!}
+		            <div class="col-md-14">
+			            {!! Form::text('gender',null,['class'=>'form-control','placeholder'=>'Gender','data-validation-required-message']) !!}
+			            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+			            @if ($errors->has('gender'))
+			                <span class="help-block">
+			                    <strong>{{ $errors->first('gender') }}</strong>
 			                </span>
 			            @endif
 		            </div>

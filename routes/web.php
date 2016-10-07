@@ -18,14 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 //The below is how we can restrict access to defenitive users. Create a group and define access.
-/*Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
-{
-	Route::resource('students','StudentController',['only'=>'index']);
-	Route::resource('users','UserController',['only'=>'index']);
-	Route::resource('grades','GradeController',['only'=>'index']);
-	Route::resource('notes','NoteController',['only'=>'index']);
-	Route::resource('notifications','NotificationController',['only'=>'index']);
-});*/
 
 Route::resource('users','UserController',['only'=>'edit']);
 Route::resource('users','UserController',['only'=>'update']);
@@ -35,13 +27,10 @@ Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
 	Route::resource('users','UserController',['only'=>'index']);
 });
 
-Route::get('/validateView', 'ViewController@validateView');
-Route::resource('students','StudentController');
-//Route::resource('users','UserController');
-Route::resource('visits','VisitController');
-Route::resource('grades','GradeController');
-Route::resource('notes','NoteController');
-Route::resource('notifications','NotificationController');
+Route::group(['middleware' => 'roles', 'roles'=>['Admin', 'Employee']], function()
+{
+	Route::resource('users','UserController',['only'=>'create']);
+});
 
 Route::get('/mentorDisplay', 'UserController@mentorDisplay');
 Route::get('/employeeDisplay', 'UserController@mentorDisplay');
@@ -52,6 +41,13 @@ Route::post('assign', [
     'uses' => 'UserController@postAdminAssignRoles',
     'before' => 'guest'
 ]);
+
+
+Route::resource('students','StudentController');
+Route::resource('visits','VisitController');
+Route::resource('grades','GradeController');
+Route::resource('notes','NoteController');
+Route::resource('notifications','NotificationController');
 
 
 

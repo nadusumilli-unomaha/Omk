@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Student;
+use App\Mentor;
 use Auth;
 
 class HomeController extends Controller
@@ -26,14 +28,15 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::where('email', Auth::user()->email)->first();//First is required because without first you get a collection and you cannot roles() on a collection.
+        $students = Student::all();
         foreach ($user->roles as $role) {
             if($role->name === 'Mentor')
             {
-                return view('users.RegistrationSuccess', compact('user'));
+                return view('users.RegistrationSuccess', compact('user','students'));
             }
             else if($role->name === 'Employee')
             {
-                return view('users.RegistrationSuccess', compact('user'));
+                return view('users.RegistrationSuccess', compact('user','students'));
             }
             else
             {            
@@ -46,14 +49,18 @@ class HomeController extends Controller
     public function afterLogin()
     {
         $user = User::where('email', Auth::user()->email)->first();//First is required because without first you get a collection and you cannot roles() on a collection.
+        $students = Student::all();
         foreach ($user->roles as $role) {
             if($role->name === 'Mentor')
             {
-                return view('users.afterLogin', compact('user'));
+                return view('users.afterLogin', compact('user','students'));
             }
             else if($role->name === 'Employee')
             {
-                return view('users.afterLogin', compact('user'));
+                $mentors = User::whereHas('roles', function ($query) {
+                                $query->where('name', 'like', 'Mentor');
+                            })->get();
+                return view('users.afterLogin', compact('user','students','mentors'));
             }
             else
             {            

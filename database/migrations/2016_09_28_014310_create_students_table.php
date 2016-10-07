@@ -20,11 +20,12 @@ class CreateStudentsTable extends Migration
             $table->string('firstName');
             $table->date('dob');
             $table->string('gender');
+            $table->string('address');
             $table->string('city');
             $table->string('state');
             $table->integer('zip');
             $table->string('email');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('school');
             $table->integer('user_id')->unsigned();
             $table->timestamps();

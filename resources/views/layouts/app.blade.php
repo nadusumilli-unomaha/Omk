@@ -55,9 +55,9 @@
                     </li>
                     <li class="page-scroll">
                         @if(Auth::Check())
-                            <a class="glyphicon glyphicon-home" href="{{ url('/afterLogin') }}"> Home</a>
+                            <a href="{{ url('/afterLogin') }}"> <i class="glyphicon glyphicon-home"></i> Home</a>
                         @else
-                            <a class="glyphicon glyphicon-home" href="{{ url('/home') }}"> Home</a>
+                            <a href="{{ url('/home') }}"> <i class="glyphicon glyphicon-home"></i> Home</a>
                         @endif
                     </li>
                     <li class="page-scroll">
@@ -74,16 +74,16 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->firstName }} <span class="caret"></span>
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="glyphicon glyphicon-user"></i>  {{ Auth::user()->firstName }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
                                 <li>
-                                    <a class="dropdown-item glyphicon glyphicon-log-out" style="color:black" href="{{ url('/logout') }}"
+                                    <a class="dropdown-item " style="color:black" href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        Logout
+                                        <i class="glyphicon glyphicon-log-out"></i>  Logout
                                     </a>
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}

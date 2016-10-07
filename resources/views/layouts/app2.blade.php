@@ -56,29 +56,29 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Portfolio</a>
+                        <a href="{{ url('/#portfolio') }}">Portfolio</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">About</a>
+                        <a href="{{ url('/#about') }}">About</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Contact</a>
+                        <a href="{{ url('/#contact') }}">Contact</a>
                     </li>
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="dropdown-submenu">
-                            <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->firstName }} <span class="caret"></span>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="glyphicon glyphicon-user"></i>  {{ Auth::user()->firstName }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
                                 <li>
-                                    <a class="dropdown-item glyphicon glyphicon-log-out" style="color:black" href="{{ url('/logout') }}"
+                                    <a class="dropdown-item" style="color:black" href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        Logout
+                                        <i class="glyphicon glyphicon-log-out"></i>  Logout
                                     </a>
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}

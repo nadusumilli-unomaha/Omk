@@ -96,11 +96,11 @@
 						  </label>
 						</div>
 
-						<!-- <input type="checkbox" name="my-checkbox" onText="Present" offText="Absent" checked>
+						<input type="checkbox" name="my-checkbox" onText="Present" offText="Absent" checked>
 						<label class="switch">
 						  <input type="checkbox">
 						  <div class="slider round"></div>
-						</label> -->
+						</label>
 
 						<div id="mentorToggle1" class="mentorProfile" >
 							<h1>Mentor Profile</h1>
@@ -144,6 +144,8 @@
 
 						        <!-- The Update user function. -->
 						        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit Mentor</a>
+								<!-- This is the Visit Schedule link. -->
+								<a class="btn btn-primary" href="#">My Visits</a>
 
 						</div>
 						<div id="mentorToggle2" class="mentorProfile">

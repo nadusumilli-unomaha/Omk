@@ -16,10 +16,9 @@ class CreateNotesTable extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('Description');
+            $table->string('description');
             $table->integer('user_id')->unsigned();
             $table->integer('attendance_id')->unsigned();
-            $table->integer('student_id')->unsigned();
             $table->timestamps();
         });
 

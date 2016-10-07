@@ -20,7 +20,6 @@ class CreateStudentsTable extends Migration
             $table->string('firstName');
             $table->date('dob');
             $table->string('gender');
-            $table->string('grade');
             $table->string('city');
             $table->string('state');
             $table->integer('zip');

@@ -26,6 +26,10 @@ class Mentor extends Model
         return $this->belongsTo('App\Employee');
     }
 
+    public function students() {
+        return $this->hasMany('App\Student');
+    }
+
     public function user()
     {
         return $this->morphOne('App\User', 'userable');

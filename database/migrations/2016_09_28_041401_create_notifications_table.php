@@ -19,7 +19,7 @@ class CreateNotificationsTable extends Migration
             $table->string('Description');
             $table->integer('user_id')->unsigned();
             $table->integer('student_id')->unsigned();
-            $table->integer('attendance_id')->unsigned();
+            $table->integer('visitor_id')->unsigned();
             $table->date('Date');
             $table->timestamps();
         });
@@ -27,7 +27,7 @@ class CreateNotificationsTable extends Migration
         Schema::table('notifications', function (Blueprint $table) {
            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-           $table->foreign('attendance_id')->references('id')->on('attendances')->onDelete('cascade');
+           $table->foreign('visitor_id')->references('id')->on('visitors')->onDelete('cascade');
         });
     }
 

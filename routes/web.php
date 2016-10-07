@@ -39,7 +39,7 @@ Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
 Route::get('/validateView', 'ViewController@validateView');
 Route::resource('students','StudentController');
 //Route::resource('users','UserController');
-Route::resource('attendances','AttendanceController');
+Route::resource('visitors','VisitorController');
 Route::resource('grades','GradeController');
 Route::resource('notes','NoteController');
 Route::resource('notifications','NotificationController');

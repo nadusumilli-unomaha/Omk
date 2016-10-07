@@ -77,7 +77,6 @@
         	color:black;
         }
 	</style>
-
 	<!-- The Basic Scafolding of the automatic adjusting screen. -->
 	<div class="row">
 	        <div class="col-xs-12 col-sm-6 col-md-8 col-md-offset-2">
@@ -150,7 +149,7 @@
 						</div>
 						<div id="mentorToggle2" class="mentorProfile">
 							<h1>Student Profile</h1>
-							<div style="color:black;">
+							<div class="table-responsive" style="color:black;">
 								<table class="table table-bordered table-striped table-hover table-inverse">
 					                <thead>
 					                <tr class="bg-info">
@@ -216,6 +215,7 @@
 						<div id="employeeToggle1" class="employeeProfile">
 							<h1>Student Profile</h1>
 							<a class="btn btn-primary" href="{{ action('StudentController@create') }}">Create a Student</a><br/>
+								<div class="table-responsive">
 								<table class="table table-bordered table-striped table-hover table-inverse">
 					                <thead>
 					                <tr class="bg-info">
@@ -253,11 +253,13 @@
 					                <hr/>
 					                </tbody>
 					            </table>
+					            </div>
 						</div>
 
 						<div id="employeeToggle2" class="employeeProfile">
 							<h1>Mentor Profile</h1>
 							<a class="btn btn-primary" href="{{ action('UserController@create') }}">Create a User</a><br/>
+							<div class="table-responsive">
 							<table class="table table-bordered table-striped table-hover table-inverse">
 					                <thead>
 					                <tr class="bg-info">
@@ -269,6 +271,7 @@
 					                    <th>Zip</th>
 					                    <th>Primary Email</th>
 					                    <th>Phone</th>
+					                    <th>password</th>
 					                    <th>Actions</th>
 					                </tr>
 					                </thead>
@@ -283,12 +286,14 @@
 			                                <td>{{ $mentor->zip }}</td>
 			                                <td>{{ $mentor->email }}</td> 
 			                                <td>{{ $mentor->phone }}</td>
+			                                <td>{{$mentor->password_resets['email']}}</td>
 											<td><a class="btn btn-primary" href="{{ route('users.edit',$mentor->id) }}">Update</a></td>
 					                    </tr>
 					                @endforeach
 					                <hr/>
 					                </tbody>
 					            </table>
+					            </div>
 						</div>
 
 						<div id="employeeToggle3" class="employeeProfile">

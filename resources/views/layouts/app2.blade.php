@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>Omaha Mentor for Kids</title>
     <link rel="icon" href="{{ asset('img/OMK.png') }}" type="image/png">
 
@@ -441,7 +442,7 @@
                     $('#mentorToggle1').css('display', 'none');
                     $('#log').val("This is 2. || ");
                 }
-            })
+            });
             //###########################################################################
             //####                     The End of Mentor JS.                         ####
             //###########################################################################
@@ -470,7 +471,13 @@
                     $('#employeeToggle3').css('display', 'block');
                     $('#log').val("This is 2. || ");
                 }
-            })
+            });
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             //###########################################################################
             //####                     The End of Employee JS.                       ####
             //###########################################################################

@@ -69,4 +69,11 @@ class HomeController extends Controller
             }
         }
     }
+
+   /* public function resetPassword($id)
+    {
+        $user = User::where('id', $id);
+        $this->tokens->create($user);
+        return redirect('/password/reset/',compact('user'));
+    }*/
 }

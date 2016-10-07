@@ -7,7 +7,7 @@
             color:black;
         }
     </style>
-    <!-- This is the admin dashboard stuff with the colum sizing. -->
+    <!-- This is the visit dashboard stuff with the colum sizing. -->
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -16,14 +16,14 @@
                     <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('AdminController@create')}}">Admins</a>
                     <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('EmployeeController@index')}}">Employee</a>
                     <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('MentorController@index')}}">Mentor</a>
-                    <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('AttendanceController@index')}}">Attendance</a>
+                    <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('VisitController@index')}}">Visit</a>
                     <a style="margin: 10px 10px 10px 10px;" class="btn btn-primary" href="{{action('GradeController@index')}}">Grade</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- The code to list all the students and other people stuff that can admin can see and create.-->
+    <!-- The code to list all the students and other people stuff that can visit can see and create.-->
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8 col-md-offset-2">
         <div class="table-responsive">   
@@ -43,21 +43,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($admins as $admin)
+                @foreach ($visits as $visit)
                     <tr>
-                            <td>{{ $admin->lastName }}</td>
-                            <td>{{ $admin->firstName }}</td>
-                            <td>{{ $admin->address }}</td>
-                            <td>{{ $admin->city }}</td>
-                            <td>{{ $admin->state }}</td>
-                            <td>{{ $admin->zip }}</td>
-                            <td>{{ $admin->email }}</td>
-                            <td>{{ $admin->phone }}</td>
-                            <td>{{ $admin->type }}</td>
-                            <td><a href="{{url('admins',$admin->id)}}" class="btn btn-primary">Read</a></td>
-                            <td><a href="{{route('admins.edit',$admin->id)}}" class="btn btn-warning">Update</a></td>
+                            <td>{{ $visit->lastName }}</td>
+                            <td>{{ $visit->firstName }}</td>
+                            <td>{{ $visit->address }}</td>
+                            <td>{{ $visit->city }}</td>
+                            <td>{{ $visit->state }}</td>
+                            <td>{{ $visit->zip }}</td>
+                            <td>{{ $visit->email }}</td>
+                            <td>{{ $visit->phone }}</td>
+                            <td>{{ $visit->type }}</td>
+                            <td><a href="{{url('visits',$visit->id)}}" class="btn btn-primary">Read</a></td>
+                            <td><a href="{{route('visits.edit',$visit->id)}}" class="btn btn-warning">Update</a></td>
                             <td>
-                                {!! Form::open(['method' => 'DELETE', 'route'=>['admins.destroy', $admin->id], 'onSubmit'=> 'if(!confirm("\n\nAre you Sure you want to delete the admin?")){return false;}'])!!}
+                                {!! Form::open(['method' => 'DELETE', 'route'=>['visits.destroy', $visit->id], 'onSubmit'=> 'if(!confirm("\n\nAre you Sure you want to delete the visit?")){return false;}'])!!}
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}
                             </td>

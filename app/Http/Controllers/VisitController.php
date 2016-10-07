@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class VisitorController extends Controller
+class VisitController extends Controller
 {
      /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class VisitorController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $visitors=Visitor::all();
-            return view('visitors.index',compact('visitors'));
+            $visits=Visit::all();
+            return view('visits.index',compact('visits'));
         }
         else{
             return redirect('/');
@@ -32,7 +32,7 @@ class VisitorController extends Controller
     public function create()
     {
         if(Auth::check()){
-            return view('visitors.create');
+            return view('visits.create');
         }
         else{
             return redirect('/');
@@ -48,19 +48,19 @@ class VisitorController extends Controller
     public function store(Request $request)
     {
         /*$this->validate($request,[
-                'name' => 'required|unique:visitors,name',
+                'name' => 'required|unique:visits,name',
                 'address' => 'required',
                 'cust_number' => 'required|numeric',
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required|numeric|digits:5',
-                'email' => 'required|email|unique:visitors,email',
-                'home_phone' => 'numeric|digits:10|unique:visitors,home_phone',
-                'cell_phone' => 'required|numeric|digits:10|unique:visitors,cell_phone',
+                'email' => 'required|email|unique:visits,email',
+                'home_phone' => 'numeric|digits:10|unique:visits,home_phone',
+                'cell_phone' => 'required|numeric|digits:10|unique:visits,cell_phone',
             ]);*/
-        $visitor= new Visitor($request->all());
-        $visitor->save();
-        return redirect('visitors');
+        $visit= new Visit($request->all());
+        $visit->save();
+        return redirect('visits');
     }
 
     /**
@@ -72,8 +72,8 @@ class VisitorController extends Controller
     public function show($id)
     {
         if(Auth::check()){
-            $visitor = Visitor::findOrFail($id);
-            return view('visitors.show',compact('visitor'));
+            $visit = Visit::findOrFail($id);
+            return view('visits.show',compact('visit'));
         }
         else{
             return redirect('/');
@@ -89,12 +89,12 @@ class VisitorController extends Controller
     public function edit($id)
     {
         if((Auth::check() && Session::get("login_id") == $id) || Auth::user()->email == 'admin@admin.com'){
-            $visitor=Visitor::find($id);
-            return view('visitors.edit',compact('visitor'));
+            $visit=Visit::find($id);
+            return view('visits.edit',compact('visit'));
         }
         else{
-            session()->flash('cust_edit_msg', 'You do not have permissions to edit other visitors!.');
-            return redirect('visitors');
+            session()->flash('cust_edit_msg', 'You do not have permissions to edit other visits!.');
+            return redirect('visits');
         }
     }
 
@@ -107,10 +107,10 @@ class VisitorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $visitor= new Visitor($request->all());
-        $visitor=Visitor::find($id);
-        $visitor->update($request->all());
-        return redirect('visitors');
+        $visit= new Visit($request->all());
+        $visit=Visit::find($id);
+        $visit->update($request->all());
+        return redirect('visits');
     }
 
     /**
@@ -121,7 +121,7 @@ class VisitorController extends Controller
      */
     public function destroy($id)
     {
-        Visitor::find($id)->delete();
-        return redirect('visitors');
+        Visit::find($id)->delete();
+        return redirect('visits');
     }
 }

@@ -7,7 +7,7 @@
         <div class="panel panel-default ">
             <div class="panel-heading"><strong>New Admin</strong></div>
             <div class="panel-body">
-		        {!! Form::open(['url' => 'admins', 'class'=>'form-horizontal', 'role'=>'form']) !!}
+		        {!! Form::open(['url' => 'visits', 'class'=>'form-horizontal', 'role'=>'form']) !!}
 		        <div class="form-group floating-label-form-group controls {{ $errors->has('lastName') ? ' has-error has-feedback' : '' }}">
 		            {!! Form::label('lastName', 'Last Name:',['class'=>'col-md-4 control-label']) !!}
 		            <div class="col-md-14">

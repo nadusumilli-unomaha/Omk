@@ -22,7 +22,6 @@ Auth::routes();
 {
 	Route::resource('students','StudentController',['only'=>'index']);
 	Route::resource('users','UserController',['only'=>'index']);
-	Route::resource('attendances','AttendanceController',['only'=>'index']);
 	Route::resource('grades','GradeController',['only'=>'index']);
 	Route::resource('notes','NoteController',['only'=>'index']);
 	Route::resource('notifications','NotificationController',['only'=>'index']);
@@ -39,7 +38,7 @@ Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
 Route::get('/validateView', 'ViewController@validateView');
 Route::resource('students','StudentController');
 //Route::resource('users','UserController');
-Route::resource('visitors','VisitorController');
+Route::resource('visits','VisitController');
 Route::resource('grades','GradeController');
 Route::resource('notes','NoteController');
 Route::resource('notifications','NotificationController');

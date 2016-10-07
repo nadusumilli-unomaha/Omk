@@ -18,13 +18,13 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->integer('user_id')->unsigned();
-            $table->integer('visitor_id')->unsigned();
+            $table->integer('visit_id')->unsigned();
             $table->integer('student_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('notes', function (Blueprint $table) {
-           $table->foreign('visitor_id')->references('id')->on('visitors')->onDelete('cascade');
+           $table->foreign('visit_id')->references('id')->on('visits')->onDelete('cascade');
            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

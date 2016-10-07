@@ -15,35 +15,35 @@
                 <tr class="bg-info"/>
                 <tr>
                     <td>Last Name</td>
-                    <td><?php echo ($admin['lastName']); ?></td>
+                    <td><?php echo ($grade['lastName']); ?></td>
                 </tr>
                 <tr>
                     <td>First Name</td>
-                    <td><?php echo ($admin['firstName']); ?></td>
+                    <td><?php echo ($grade['firstName']); ?></td>
                 </tr>
                 <tr>
                     <td>Address</td>
-                    <td><?php echo ($admin['address']); ?></td>
+                    <td><?php echo ($grade['address']); ?></td>
                 </tr>
                 <tr>
                     <td>City </td>
-                    <td><?php echo ($admin['city']); ?></td>
+                    <td><?php echo ($grade['city']); ?></td>
                 </tr>
                 <tr>
                     <td>State</td>
-                    <td><?php echo ($admin['state']); ?></td>
+                    <td><?php echo ($grade['state']); ?></td>
                 </tr>
                 <tr>
                     <td>Zip </td>
-                    <td><?php echo ($admin['zip']); ?></td>
+                    <td><?php echo ($grade['zip']); ?></td>
                 </tr>
                 <tr>
                     <td>Phone</td>
-                    <td><?php echo ($admin['phone']); ?></td>
+                    <td><?php echo ($grade['phone']); ?></td>
                 </tr>
                 <tr>
                     <td>Type</td>
-                    <td><?php echo ($admin['type']); ?></td>
+                    <td><?php echo ($grade['type']); ?></td>
                 </tr>
             </tbody>
         </table>

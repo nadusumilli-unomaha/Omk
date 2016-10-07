@@ -15,35 +15,35 @@
                 <tr class="bg-info"/>
                 <tr>
                     <td>Last Name</td>
-                    <td><?php echo ($admin['lastName']); ?></td>
+                    <td><?php echo ($visit['lastName']); ?></td>
                 </tr>
                 <tr>
                     <td>First Name</td>
-                    <td><?php echo ($admin['firstName']); ?></td>
+                    <td><?php echo ($visit['firstName']); ?></td>
                 </tr>
                 <tr>
                     <td>Address</td>
-                    <td><?php echo ($admin['address']); ?></td>
+                    <td><?php echo ($visit['address']); ?></td>
                 </tr>
                 <tr>
                     <td>City </td>
-                    <td><?php echo ($admin['city']); ?></td>
+                    <td><?php echo ($visit['city']); ?></td>
                 </tr>
                 <tr>
                     <td>State</td>
-                    <td><?php echo ($admin['state']); ?></td>
+                    <td><?php echo ($visit['state']); ?></td>
                 </tr>
                 <tr>
                     <td>Zip </td>
-                    <td><?php echo ($admin['zip']); ?></td>
+                    <td><?php echo ($visit['zip']); ?></td>
                 </tr>
                 <tr>
                     <td>Phone</td>
-                    <td><?php echo ($admin['phone']); ?></td>
+                    <td><?php echo ($visit['phone']); ?></td>
                 </tr>
                 <tr>
                     <td>Type</td>
-                    <td><?php echo ($admin['type']); ?></td>
+                    <td><?php echo ($visit['type']); ?></td>
                 </tr>
             </tbody>
         </table>

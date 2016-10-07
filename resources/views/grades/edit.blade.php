@@ -7,7 +7,7 @@
         <div class="panel panel-default ">
             <div class="panel-heading"><strong>Update Admin</strong></div>
             <div class="panel-body">
-    			{!! Form::model($admin,['method' => 'PATCH','route'=>['admins.update',$admin->id]]) !!}
+    			{!! Form::model($grade,['method' => 'PATCH','route'=>['grades.update',$grade->id]]) !!}
 		        <div class="form-group floating-label-form-group controls {{ $errors->has('lastName') ? ' has-error has-feedback' : '' }}">
 		            {!! Form::label('lastName', 'Last Name:',['class'=>'col-md-4 control-label']) !!}
 		            <div class="col-md-14">

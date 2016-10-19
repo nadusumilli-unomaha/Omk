@@ -36,7 +36,9 @@ class StudentController extends Controller
     public function create()
     {
         if(Auth::check()){
-            $users = User::pluck('firstName','id');
+            $users = User::whereHas('roles', function ($query) {
+                                $query->where('name', 'like', 'Mentor');
+                            })->pluck('firstName','id');;
             return view('students.create',compact('users'));
         }
         else{

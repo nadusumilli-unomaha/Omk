@@ -24,6 +24,7 @@ class User extends Authenticatable
         'state',
         'zip',
         'phone',
+        'role_request'
     ];
 
     /**
@@ -41,7 +42,13 @@ class User extends Authenticatable
     }
     
     public function students() {
-        return $this->hasMany('App\Student');
+        return $this->belongsToMany('App\Student');
+    }
+    public function visits() {
+        return $this->hasMany('App\Visit');
+    }
+    public function grades() {
+        return $this->belongsToMany('App\Visit');
     }
 
     public function hasAnyRole($roles)

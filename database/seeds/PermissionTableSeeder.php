@@ -31,5 +31,10 @@ class PermissionTableSeeder extends Seeder
         $permission_mentor_0->name = 'edit_mentor_self';
         $permission_mentor_0->description = 'The Mentor can only edit himself in the system.';
         $permission_mentor_0->save();
+
+        $permission_pending_0 = new Permission;
+        $permission_pending_0->name = 'nothing';
+        $permission_pending_0->description = 'This gives permissions to do nothing.';
+        $permission_pending_0->save();
     }
 }

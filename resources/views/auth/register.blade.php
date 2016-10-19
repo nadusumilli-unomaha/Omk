@@ -8,17 +8,17 @@
                 <form class="form-horizontal" role="form" id="#adminRegisteration" method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
 
-                    <div class="form-group floating-label-form-group controls {{ $errors->has('role') ? ' has-error' : '' }}">
-                        <label  for="role" class="col-md-4 control-label" style="color:#2c3e50;">Role</label>
+                    <div class="form-group floating-label-form-group controls {{ $errors->has('role_request') ? ' has-error' : '' }}">
+                        <label  for="role_request" class="col-md-4 control-label" style="color:#2c3e50;">Role</label>
 
                         <div class="col-md-14">
-                            <select id="role" class="form-control" name="role" value="{{ old('role') }}" required autofocus>
+                            <select id="role_request" class="form-control" name="role_request" value="{{ old('role_request') }}" required autofocus>
                                 <option value="Employee">Employee</option>
                                 <option value="Mentor" selected>Mentor</option>
                             </select>
-                            @if ($errors->has('role'))
+                            @if ($errors->has('role_request'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('role') }}</strong>
+                                    <strong>{{ $errors->first('role_request') }}</strong>
                                 </span>
                             @endif
                         </div>

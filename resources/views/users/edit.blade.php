@@ -71,7 +71,7 @@
 		        <div class="form-group floating-label-form-group controls {{ $errors->has('zip') ? ' has-error has-feedback' : '' }}">
 		            {!! Form::label('zip', 'Zip:',['class'=>'col-md-4 control-label']) !!}
 		            <div class="col-md-14">
-			            {!! Form::text('zip',$user['lastName'],['class'=>'form-control','placeholder'=>'Zip','data-validation-required-message']) !!}
+			            {!! Form::text('zip',$user['zip'],['class'=>'form-control','placeholder'=>'Zip','data-validation-required-message']) !!}
 			            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
 			            @if ($errors->has('zip'))
 			                <span class="help-block">

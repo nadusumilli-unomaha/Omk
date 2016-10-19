@@ -16,8 +16,8 @@
     <!-- Bootstrap Core CSS -->
     <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
     {{Html::style('vendor/bootstrap/css/bootstrap.min.css')}}
-    {{Html::style('vendor/bootstrap/css/bootstrap-switch.css')}}
-    {{Html::style('vendor/bootstrap/css/bootstrap-switch.min.css')}}
+    <!-- Html::style('vendor/bootstrap/css/bootstrap-switch.css')}}
+    Html::style('vendor/bootstrap/css/bootstrap-switch.min.css')}} -->
     <!-- Theme CSS -->
     <!-- <link href="css/freelancer.min.css" rel="stylesheet"> -->
     {{Html::style('css/freelancer.min.css')}}
@@ -86,7 +86,7 @@
                                     </form>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" style="color:black"  href="{{ url('/password/reset/') }}">
+                                    <a class="dropdown-item" style="color:black"  href="{{ url('/resetPassword') }}">
                                         Reset Password
                                     </a>
                                 </li>
@@ -119,13 +119,13 @@
         <div class="footer-above">
             <div class="container">
                 <div class="row">
-                    <div class="footer-col col-md-4">
+                    <div class="footer-col col-md-3">
                         <h3>Location</h3>
                         <p>University of Nebraska
                             <br>6001 Dodge Street
                             <br>Omaha, NE 68182</p>
                     </div>
-                    <div class="footer-col col-md-4">
+                    <div class="footer-col col-md-3">
                         <h3>Around the Web</h3>
                         <ul class="list-inline">
                             <li>
@@ -145,10 +145,13 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="footer-col col-md-4">
+                    <div class="footer-col col-md-3">
                         <h3>About Super Awesome</h3>
                         <p>Super Awesome is a software development company which provides sofware related service to companies.</p>
                     </div>
+                    <div class="footer-col col-md-3">
+                        <img class="img-responsive" src="img/SA.png" alt="">
+                    </div>  
                 </div>
             </div>
         </div>
@@ -401,8 +404,8 @@
     <!-- Bootstrap Core JavaScript -->
     <!-- <script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
     {{Html::script('vendor/bootstrap/js/bootstrap.min.js')}}
-    {{Html::script('vendor/bootstrap/js/bootstrap-switch.min.js')}}
-    {{Html::script('vendor/bootstrap/js/bootstrap-switch.js')}}
+    <!-- Html::script('vendor/bootstrap/js/bootstrap-switch.min.js')}}
+    Html::script('vendor/bootstrap/js/bootstrap-switch.js')}} -->
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
@@ -422,25 +425,30 @@
             //###########################################################################
             //####                The Defenitions for JS Code.                       ####
             //###########################################################################
-            var $myRadioGroup = $('#myRadioGroup');
-            var $mentorToggle1 = $('#mentorToggle1');
-            var $mentorToggle2 = $('#mentorToggle2');
+            
 
 
             //###########################################################################
             //####    The JavaScript to Handle Employee Radio Button Event on Divs.  ####
             //###########################################################################
             $("input[name=mentorToggle]:radio").change(function () {
-                $('#mentorToggle2').css('visibility', 'visible')
                 if ($(this).val() == '1') {
                     $('#mentorToggle1').css('display', 'block');
                     $('#mentorToggle2').css('display', 'none');
+                    $('#mentorToggle3').css('display', 'none');
                     $('#log').val('This is 1. || ');
                 }
                 else if($(this).val() == '2'){
-                    $('#mentorToggle2').css('display', 'block');
                     $('#mentorToggle1').css('display', 'none');
+                    $('#mentorToggle2').css('display', 'block');
+                    $('#mentorToggle3').css('display', 'none');
                     $('#log').val("This is 2. || ");
+                }
+                else if($(this).val() == '3'){
+                    $('#mentorToggle1').css('display', 'none');
+                    $('#mentorToggle2').css('display', 'none');
+                    $('#mentorToggle3').css('display', 'block');
+                    $('#log').val("This is 3. || ");
                 }
             });
             //###########################################################################
@@ -451,38 +459,135 @@
             //####    The JavaScript to Handle Employee Radio Button Event on Divs.  ####
             //###########################################################################
             $("input[name=employeeToggle]:radio").change(function () {
-                $('#employeeToggle2').css('visibility', 'visible')
-                $('#employeeToggle3').css('visibility', 'visible')
                 if ($(this).val() == '1') {
                     $('#employeeToggle1').css('display', 'block');
                     $('#employeeToggle2').css('display', 'none');
                     $('#employeeToggle3').css('display', 'none');
+                    $('#employeeToggle4').css('display', 'none');
+                    $('#employeeToggle5').css('display', 'none');
                     $('#log').val('This is 1. || ');
                 }
                 else if($(this).val() == '2'){
-                    $('#employeeToggle1').css('display', 'none');
+                    $('#employeeToggle1').css('display', 'none'); 
                     $('#employeeToggle2').css('display', 'block');
                     $('#employeeToggle3').css('display', 'none');
+                    $('#employeeToggle4').css('display', 'none');
+                    $('#employeeToggle5').css('display', 'none');
                     $('#log').val("This is 2. || ");
                 }
                 else if($(this).val() == '3'){
                     $('#employeeToggle1').css('display', 'none');
                     $('#employeeToggle2').css('display', 'none');
                     $('#employeeToggle3').css('display', 'block');
-                    $('#log').val("This is 2. || ");
+                    $('#employeeToggle4').css('display', 'none');
+                    $('#employeeToggle5').css('display', 'none');
+                    $('#log').val("This is 3. || ");
                 }
-            });
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                else if($(this).val() == '4'){
+                    $('#employeeToggle1').css('display', 'none');
+                    $('#employeeToggle2').css('display', 'none');
+                    $('#employeeToggle3').css('display', 'none');
+                    $('#employeeToggle4').css('display', 'block');
+                    $('#employeeToggle5').css('display', 'none');
+                    $('#log').val("This is 3. || ");
+                }
+                else if($(this).val() == '5'){
+                    $('#employeeToggle1').css('display', 'none');
+                    $('#employeeToggle2').css('display', 'none');
+                    $('#employeeToggle3').css('display', 'none');
+                    $('#employeeToggle4').css('display', 'none');
+                    $('#employeeToggle5').css('display', 'block');
+                    $('#log').val("This is 3. || ");
                 }
             });
             //###########################################################################
             //####                     The End of Employee JS.                       ####
             //###########################################################################
-
-            $("[name='my-checkbox']").bootstrapSwitch();
+            
+            //###########################################################################
+            //####    The JavaScript to Handle Admin Radio Button Event on Divs.     ####
+            //###########################################################################
+            $("input[name=adminToggle]:radio").change(function () {
+                if ($(this).val() == '1') {
+                    $('#adminToggle1').css('display', 'block');
+                    $('#adminToggle2').css('display', 'none');
+                    $('#adminToggle3').css('display', 'none');
+                    $('#adminToggle4').css('display', 'none');
+                    $('#adminToggle5').css('display', 'none');
+                    $('#adminToggle6').css('display', 'none');
+                    $('#adminToggle7').css('display', 'none');
+                    $('#log').val('This is 1. || ');
+                }
+                else if($(this).val() == '2'){
+                    $('#adminToggle1').css('display', 'none');
+                    $('#adminToggle2').css('display', 'block');
+                    $('#adminToggle3').css('display', 'none');
+                    $('#adminToggle4').css('display', 'none');
+                    $('#adminToggle5').css('display', 'none');
+                    $('#adminToggle6').css('display', 'none');
+                    $('#adminToggle7').css('display', 'none');
+                    $('#log').val("This is 2. || ");
+                }
+                else if($(this).val() == '3'){
+                    $('#adminToggle1').css('display', 'none');
+                    $('#adminToggle2').css('display', 'none');
+                    $('#adminToggle3').css('display', 'block');
+                    $('#adminToggle4').css('display', 'none');
+                    $('#adminToggle5').css('display', 'none');
+                    $('#adminToggle6').css('display', 'none');
+                    $('#adminToggle7').css('display', 'none');
+                    $('#log').val("This is 3. || ");
+                }
+                else if($(this).val() == '4'){
+                    $('#adminToggle1').css('display', 'none');
+                    $('#adminToggle2').css('display', 'none');
+                    $('#adminToggle3').css('display', 'none');
+                    $('#adminToggle4').css('display', 'block');
+                    $('#adminToggle5').css('display', 'none');
+                    $('#adminToggle6').css('display', 'none');
+                    $('#adminToggle7').css('display', 'none');
+                    $('#log').val("This is 3. || ");
+                }
+                else if($(this).val() == '5'){
+                    $('#adminToggle1').css('display', 'none');
+                    $('#adminToggle2').css('display', 'none');
+                    $('#adminToggle3').css('display', 'none');
+                    $('#adminToggle4').css('display', 'none');
+                    $('#adminToggle5').css('display', 'block');
+                    $('#adminToggle6').css('display', 'none');
+                    $('#adminToggle7').css('display', 'none');
+                    $('#log').val("This is 3. || ");
+                }
+                else if($(this).val() == '6'){
+                    $('#adminToggle1').css('display', 'none');
+                    $('#adminToggle2').css('display', 'none');
+                    $('#adminToggle3').css('display', 'none');
+                    $('#adminToggle4').css('display', 'none');
+                    $('#adminToggle5').css('display', 'none');
+                    $('#adminToggle6').css('display', 'block');
+                    $('#adminToggle7').css('display', 'none');
+                    $('#log').val("This is 3. || ");
+                }
+                else if($(this).val() == '7'){
+                    $('#adminToggle1').css('display', 'none');
+                    $('#adminToggle2').css('display', 'none');
+                    $('#adminToggle3').css('display', 'none');
+                    $('#adminToggle4').css('display', 'none');
+                    $('#adminToggle5').css('display', 'none');
+                    $('#adminToggle6').css('display', 'none');
+                    $('#adminToggle7').css('display', 'block');
+                    $('#log').val("This is 3. || ");
+                }
+            });
+            //###########################################################################
+            //####                     The End of Admin JS.                          ####
+            //###########################################################################
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         });
     </script>
 

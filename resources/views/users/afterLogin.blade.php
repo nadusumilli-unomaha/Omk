@@ -3,7 +3,7 @@
 @section('content')
 	<style type="text/css">
 		/* The switch - the box around the slider */
-		.switch {
+		.switchround {
 		  position: relative;
 		  display: inline-block;
 		  width: 60px;
@@ -11,7 +11,7 @@
 		}
 
 		/* Hide default HTML checkbox */
-		.switch input {display:none;}
+		.switchround input {display:none;}
 
 		/* The slider */
 		.slider {
@@ -62,15 +62,27 @@
 		}
 
 		#mentorToggle2 {
-            visibility: hidden;
+            display: none;
+        }
+
+        #mentorToggle3 {
+            display: none;
         }
 
         #employeeToggle2 {
-            visibility: hidden;
+            display: none;
         }
         
         #employeeToggle3 {
-            visibility: hidden;
+            display: none;
+        }
+        
+        #employeeToggle4 {
+            display: none;
+        }
+        
+        #employeeToggle5 {
+            display: none;
         }
 
         td, th{
@@ -93,14 +105,13 @@
 						  <label class="btn btn-primary">
 						    <input type="radio" name="mentorToggle" id="option2" autocomplete="off" value="2"> View My Student Profile
 						  </label>
+						  <label class="btn btn-primary">
+						    <input type="radio" name="mentorToggle" id="option3" autocomplete="off" value="3"> Attendance
+						  </label>
+						</div>
 						</div>
 
-						<input type="checkbox" name="my-checkbox" onText="Present" offText="Absent" checked>
-						<label class="switch">
-						  <input type="checkbox">
-						  <div class="slider round"></div>
-						</label>
-
+						<!-- This is the first mentor toggle or the profile information relating to the mentors. -->
 						<div id="mentorToggle1" class="mentorProfile" >
 							<h1>Mentor Profile</h1>
 							<table class="table table-striped table-bordered table-hover">
@@ -145,8 +156,9 @@
 						        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit Mentor</a>
 								<!-- This is the Visit Schedule link. -->
 								<a class="btn btn-primary" href="#">My Visits</a>
-
 						</div>
+
+						<!-- This is the second mentor toggle or the student information relating to the mentors. -->
 						<div id="mentorToggle2" class="mentorProfile">
 							<h1>Student Profile</h1>
 							<div class="table-responsive" style="color:black;">
@@ -189,6 +201,41 @@
 					            </table>
 							</div>
 						</div>
+						
+						<div id="mentorToggle3" class="mentorProfile">
+							<h1>Visit Attendance</h1>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									Student Attendance
+								</div>
+								<form>
+									<table class="table table-bordered table-striped table-hover table-inverse">
+										<thead>
+											<th>Student</th>
+											<th>Present</th>
+										</thead>
+										<tbody>
+											@foreach ($students as $student)
+											<tr>
+												<td>
+													{{ $student->firstName }}
+												</td>
+												<td>
+													<input type="hidden" name="student_id" value="{{$student->id}}">
+													<label class="switchround" >
+													  <input type="checkbox" name="actual" value="Present">
+													  <div class="slider round"></div>
+													</label>
+												</td>
+												</tr>
+					                		@endforeach
+										</tbody>
+									</table>
+									<input type="submit" class="btn btn-primary">
+								</form>
+							</div>
+						</div>
+						<!-- This is the end of the mentor Toggles in the Metor method. -->
 					</div>
 				@endif
 				<!--###########################################################################-->
@@ -209,9 +256,16 @@
 						    <input type="radio" name="employeeToggle" id="option2" autocomplete="off" value="2" > View Mentor Profile
 						  </label>
 						  <label class="btn btn-primary">
-						    <input type="radio" name="employeeToggle" id="option3" autocomplete="off" value="3" > Notify
+						    <input type="radio" name="employeeToggle" id="option2" autocomplete="off" value="3" > View Visits
+						  </label>
+						  <label class="btn btn-primary">
+						    <input type="radio" name="employeeToggle" id="option3" autocomplete="off" value="4" > View Grades
+						  </label>
+						  <label class="btn btn-primary">
+						    <input type="radio" name="employeeToggle" id="option3" autocomplete="off" value="5" > Notify
 						  </label>
 						</div>
+					</div>
 						<div id="employeeToggle1" class="employeeProfile">
 							<h1>Student Profile</h1>
 							<a class="btn btn-primary" href="{{ action('StudentController@create') }}">Create a Student</a><br/>
@@ -297,6 +351,70 @@
 						</div>
 
 						<div id="employeeToggle3" class="employeeProfile">
+							<h1>visit Profile</h1>
+							<a class="btn btn-primary" href="{{ action('VisitController@create') }}">Create a visit</a><br/>
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped table-hover table-inverse">
+					                <thead>
+					                <tr class="bg-info">
+					                    <th>Date</th>
+					                    <th>Attendance</th>
+					                    <th>Mentor</th>
+					                    <th>Student</th>
+					                    <th>Actions</th>
+					                </tr>
+					                </thead>
+					                <tbody>
+					                @foreach ($visits as $visit)
+					                    <tr>
+			                                <td>{{ $visit->Date }}</td>
+			                                <td>{{ $visit->check }}</td>
+			                                <td>{{ $visit->users->firstName }}</td>
+			                                <td>{{ $visit->student['firstName'] }}</td>
+											<td><a class="btn btn-primary" href="{{ route('visits.edit',$visit->id) }}">Update</a></td>
+					                    </tr>
+					                @endforeach
+					                <hr/>
+					                </tbody>
+					            </table>
+					            </div>
+					    </div>
+
+						<div id="employeeToggle4" class="employeeProfile">
+							<h1>grade Profile</h1>
+							<a class="btn btn-primary" href="{{ action('GradeController@create') }}">Create a grade</a><br/>
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped table-hover table-inverse">
+					                <thead>
+					                <tr class="bg-info">
+					                    <th>Subject</th>
+					                    <th>Period</th>
+					                    <th>Grade</th>
+					                    <th>Comments</th>
+					                    <th>Student</th>
+					                    <th>Mentor</th>
+					                    <th>Actions</th>
+					                </tr>
+					                </thead>
+					                <tbody>
+					                @foreach ($grades as $grade)
+					                    <tr>
+			                                <td>{{ $grade->subject }}</td>
+			                                <td>{{ $grade->period }}</td>
+			                                <td>{{ $grade->actual }}</td>
+			                                <td>{{ $grade->comments }}</td>
+			                                <td>{{ $grade->user['firstName'] }}</td>
+			                                <td>{{ $grade->student['firstName'] }}</td>
+											<td><a class="btn btn-primary" href="{{ route('grades.edit',$grade->id) }}">Update</a></td>
+					                    </tr>
+					                @endforeach
+					                <hr/>
+					                </tbody>
+					            </table>
+					            </div>
+					    </div>
+
+						<div id="employeeToggle5" class="employeeProfile">
 							<h1>Notify Users</h1>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

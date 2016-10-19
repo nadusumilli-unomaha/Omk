@@ -11,10 +11,17 @@ class Grade extends Model
         'period',
         'actual',
         'comments',
+        'student_id',
+        'user_id',
     ];
 
     public function students()
     {
-    	$this->hasMany('App\Student');
+    	$this->belongsToMany('App\Student');
+    }
+
+    public function users()
+    {
+        $this->belongsToMany('App\User');
     }
 }

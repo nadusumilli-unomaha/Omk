@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use App\Role;
+use App\Student;
+use App\Mentor;
+use App\Visit;
+use App\Grade;
 use Auth;
 
 class UserController extends Controller
@@ -20,7 +24,17 @@ class UserController extends Controller
     {
         if(Auth::check()){
             $users=User::all();
-            return view('users.index',compact('users'));
+            $mentors = User::whereHas('roles', function ($query) {
+                            $query->where('name', 'like', 'Mentor');
+                        })->get();
+            $employees = User::whereHas('roles', function ($query) {
+                            $query->where('name', 'like', 'Employee');
+                        })->get();
+            $admin = User::where('email', Auth::user()->email)->first();
+            $students = Student::all();
+            $visits = Visit::all();
+            $grades = Grade::all();
+            return view('users.index',compact('users','mentors','employees','students','visits','grades','admin'));
         }
         else{
             return redirect('/');
@@ -113,17 +127,17 @@ class UserController extends Controller
                 'email' => 'required|email',
                 'phone' => 'required|numeric|digits:10',
         ]);
-        $user1=User::find($id);
-        $user1->firstName = $request->firstName;
-        $user1->email = $request->email;
-        $user1->password = $user1->password;
-        $user1->lastName = $request->lastName;
-        $user1->address = $request->address;
-        $user1->city = $request->city;
-        $user1->state = $request->state;
-        $user1->zip = $request->zip;
-        $user1->phone = $request->phone;
-        $user1->update();
+        $user=User::find($id);
+        $user->firstName = $request->firstName;
+        $user->email = $request->email;
+        $user->password = $user1->password;
+        $user->lastName = $request->lastName;
+        $user->address = $request->address;
+        $user->city = $request->city;
+        $user->state = $request->state;
+        $user->zip = $request->zip;
+        $user->phone = $request->phone;
+        $user->update();
         return redirect('users.afterLogin');
     }
 
@@ -152,19 +166,9 @@ class UserController extends Controller
         if($request['role_mentor']){
             $user->roles()->attach(Role::where('name','Mentor')->first());
         }
+        if($request['role_pending']){
+            $user->roles()->attach(Role::where('name','Pending')->first());
+        }
         return redirect()->back();
-    }
-
-    public function mentorDisplay()
-    {
-        $user = User::where('email', Auth::user()->email)->firstOrFail();
-        return view('users.mentorDisplay', compact('user'));
-    }
-
-
-    public function employeeDisplay()
-    {
-        $user = User::where('email', Auth::user()->email)->firstOrFail();
-        return view('users.employeeDisplay', compact('user'));
     }
 }

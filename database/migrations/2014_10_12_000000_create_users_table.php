@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('state');
             $table->integer('zip');
             $table->string('phone');
+            $table->string('role_request');
             $table->timestamps();
         });
     }

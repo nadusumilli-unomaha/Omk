@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Auth;
+use App\Visit;
+use App\User;
+use App\Student;
 
 class VisitController extends Controller
 {
@@ -32,7 +36,11 @@ class VisitController extends Controller
     public function create()
     {
         if(Auth::check()){
-            return view('visits.create');
+            $mentors = User::whereHas('roles', function ($query) {
+                                $query->where('name', 'like', 'Mentor');
+                            })->pluck('firstName','id');
+            $students = Student::pluck('firstName','id');     
+            return view('visits.create',compact('mentors','students'));
         }
         else{
             return redirect('/');
@@ -60,7 +68,7 @@ class VisitController extends Controller
             ]);*/
         $visit= new Visit($request->all());
         $visit->save();
-        return redirect('visits');
+        return redirect('/afterLogin');
     }
 
     /**

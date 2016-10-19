@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/afterLogin';
 
     /**
      * Create a new controller instance.
@@ -73,8 +73,9 @@ class RegisterController extends Controller
         $user->state = $data['state'];
         $user->zip = $data['zip'];
         $user->phone = $data['phone'];
+        $user->role_request = $data['role_request'];
         $user->save();
-        $user->roles()->attach(Role::where('name',$data['role'])->first());
+        $user->roles()->attach(Role::where('name','Pending')->first());
         return $user;
     }
 }

@@ -83,7 +83,7 @@
 		        <div class="form-group floating-label-form-group controls {{ $errors->has('email') ? ' has-error has-feedback' : '' }}">
 		            {!! Form::label('email', 'Primary Email:',['class'=>'col-md-4 control-label']) !!}
 		            <div class="col-md-14">
-			            {!! Form::text('email',$user['email'],['class'=>'form-control','placeholder'=>'Primary Email','data-validation-required-message']) !!}
+			            {!! Form::text('email',$user['email'],['class'=>'form-control','placeholder'=>'Primary Email','readonly','data-validation-required-message']) !!}
 			            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
 			            @if ($errors->has('email'))
 			                <span class="help-block">

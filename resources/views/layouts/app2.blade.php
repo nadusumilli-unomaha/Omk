@@ -57,6 +57,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
+                        @if(Auth::Check())
+                            <a href="{{ url('/afterLogin') }}"> <i class="glyphicon glyphicon-home"></i> Home</a>
+                        @else
+                            <a href="{{ url('/home') }}"> <i class="glyphicon glyphicon-home"></i> Home</a>
+                        @endif
+                    </li>
+                    <li class="page-scroll">
                         <a href="{{ url('/#portfolio') }}">Portfolio</a>
                     </li>
                     <li class="page-scroll">
@@ -425,7 +432,19 @@
             //###########################################################################
             //####                The Defenitions for JS Code.                       ####
             //###########################################################################
-            
+            function checkPasswordMatch() {
+                var password = $("#password").val();
+                var confirmPassword = $("#password-confirm").val();
+
+                if (password != confirmPassword)
+                    $('#password, #password-confirm').each(function() {
+                        this.setCustomValidity("Passwords Don't Match");
+                    });
+                else
+                    $('#password, #password-confirm').each(function() {
+                        this.setCustomValidity("");
+                    });
+            }
 
 
             //###########################################################################

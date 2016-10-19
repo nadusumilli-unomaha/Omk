@@ -127,18 +127,18 @@ class UserController extends Controller
                 'email' => 'required|email',
                 'phone' => 'required|numeric|digits:10',
         ]);
-        $user=User::find($id);
-        $user->firstName = $request->firstName;
-        $user->email = $request->email;
-        $user->password = $user1->password;
-        $user->lastName = $request->lastName;
-        $user->address = $request->address;
-        $user->city = $request->city;
-        $user->state = $request->state;
-        $user->zip = $request->zip;
-        $user->phone = $request->phone;
-        $user->update();
-        return redirect('users.afterLogin');
+        $user1=User::find($id);
+        $user1->firstName = $request->firstName;
+        $user1->email = $request->email;
+        $user1->password = $user1->password;
+        $user1->lastName = $request->lastName;
+        $user1->address = $request->address;
+        $user1->city = $request->city;
+        $user1->state = $request->state;
+        $user1->zip = $request->zip;
+        $user1->phone = $request->phone;
+        $user1->update();
+        return redirect('/afterLogin');
     }
 
     /**

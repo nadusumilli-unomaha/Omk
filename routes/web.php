@@ -34,6 +34,7 @@ Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
 		'uses' => 'UserController@postAdminAssignRoles',
 		'before' => 'guest'
 	]);
+	Route::resource('users','UserController',['only'=>'destroy']);
 });
 
 //############################################################################
@@ -42,6 +43,7 @@ Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
 Route::group(['middleware' => 'roles', 'roles'=>['Admin', 'Employee']], function()
 {
 	Route::resource('users','UserController',['only'=>'create']);
+	Route::resource('users','UserController',['only'=>'show']);
 });
 
 //###################################################################################

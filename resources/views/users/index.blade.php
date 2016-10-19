@@ -191,6 +191,7 @@
                         <th>Zip</th>
                         <th>Primary Email</th>
                         <th>Phone</th>
+                        <th colspan="3">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -204,7 +205,9 @@
                                     <td>{{ $student->zip }}</td>
                                     <td>{{ $student->email }}
                                     <td>{{ $student->phone }}</td>
-                                </form>
+                                    <td><a class="btn btn-primary" href="{{ route('students.edit',$student->id) }}">Update</a></td>
+                                    <td><a class="btn btn-primary" href="{{ route('students.destroy',$student->id) }}">Delete</a></td>
+                                    <td><a class="btn btn-primary" href="{{ route('students.show',$student->id) }}">Read</a></td>
                         </tr>
                     @endforeach
                     <hr/>
@@ -229,6 +232,7 @@
                         <th>Zip</th>
                         <th>Primary Email</th>
                         <th>Phone</th>
+                        <th colspan="3" class="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -242,7 +246,9 @@
                                     <td>{{ $mentor->zip }}</td>
                                     <td>{{ $mentor->email }}
                                     <td>{{ $mentor->phone }}</td>
-                                </form>
+                                    <td><a class="btn btn-primary" href="{{ route('users.edit',$mentor->id) }}">Update</a></td>
+                                    <td><a class="btn btn-primary" href="{{ route('users.destroy',$mentor->id) }}">Delete</a></td>
+                                    <td><a class="btn btn-primary" href="{{ route('users.show',$mentor->id) }}">Read</a></td>
                         </tr>
                     @endforeach
                     <hr/>
@@ -267,6 +273,7 @@
                         <th>Zip</th>
                         <th>Primary Email</th>
                         <th>Phone</th>
+                        <th colspan="3" class="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -280,7 +287,9 @@
                                     <td>{{ $employee->zip }}</td>
                                     <td>{{ $employee->email }}
                                     <td>{{ $employee->phone }}</td>
-                                </form>
+                                    <td><a class="btn btn-primary" href="{{ route('users.edit',$employee->id) }}">Update</a></td>
+                                    <td><a class="btn btn-primary" href="{{ route('users.destroy',$employee->id) }}">Delete</a></td>
+                                    <td><a class="btn btn-primary" href="{{ route('users.show',$employee->id) }}">Read</a></td>
                         </tr>
                     @endforeach
                     <hr/>
@@ -297,23 +306,23 @@
                 <table class="table table-bordered table-striped table-hover table-inverse">
                     <thead>
                     <tr class="bg-info">
-                        <th>Last Name</th>
-                        <th>First Name</th>
-                        <th>Current Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zip</th>
-                        <th>Primary Email</th>
-                        <th>Phone</th>
+                        <th>Date</th>
+                        <th>Attendance</th>
+                        <th>Mentor</th>
+                        <th>Student</th>
+                        <th colspan="3" class="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($visits as $visit)
                         <tr>
-                                            <td>{{ $visit->Date }}</td>
-                                            <td>{{ $visit->check }}</td>
-                                            <td>{{ $visit->users }}</td>
-                                            <td>{{ $visit->students }}</td>
+                            <td>{{ $visit->Date }}</td>
+                            <td>{{ $visit->check }}</td>
+                            <td>{{ $visit->users }}</td>
+                            <td>{{ $visit->students }}</td>
+                            <td><a class="btn btn-primary" href="{{ route('visits.edit',$visit->id) }}">Update</a></td>
+                            <td><a class="btn btn-primary" href="{{ route('visits.destroy',$visit->id) }}">Delete</a></td>
+                            <td><a class="btn btn-primary" href="{{ route('visits.show',$visit->id) }}">Read</a></td>
                         </tr>
                     @endforeach
                     <hr/>
@@ -338,20 +347,23 @@
                         <th>Zip</th>
                         <th>Primary Email</th>
                         <th>Phone</th>
+                        <th colspan="3" class="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($grades as $grade)
                         <tr>
-                                    <td>{{ $grade->lastName }}</td>
-                                    <td>{{ $grade->firstName }}</td>
-                                    <td>{{ $grade->address }}</td>
-                                    <td>{{ $grade->city }}</td>
-                                    <td>{{ $grade->state }}</td>
-                                    <td>{{ $grade->zip }}</td>
-                                    <td>{{ $grade->email }}
-                                    <td>{{ $grade->phone }}</td>
-                                </form>
+                            <td>{{ $grade->lastName }}</td>
+                            <td>{{ $grade->firstName }}</td>
+                            <td>{{ $grade->address }}</td>
+                            <td>{{ $grade->city }}</td>
+                            <td>{{ $grade->state }}</td>
+                            <td>{{ $grade->zip }}</td>
+                            <td>{{ $grade->email }}
+                            <td>{{ $grade->phone }}</td>
+                            <td><a class="btn btn-primary" href="{{ route('grades.edit',$grade->id) }}">Update</a></td>
+                            <td><a class="btn btn-primary" href="{{ route('grades.destroy',$grade->id) }}">Delete</a></td>
+                            <td><a class="btn btn-primary" href="{{ route('grades.show',$grade->id) }}">Read</a></td>
                         </tr>
                     @endforeach
                     <hr/>

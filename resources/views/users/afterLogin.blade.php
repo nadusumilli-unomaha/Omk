@@ -372,7 +372,7 @@
 			                                <td>{{ $visit->check }}</td>
 			                                <td>{{ $visit->user->firstName }}</td>
 			                                <td>{{ $visit->student->firstName }}</td>
-											<td><a class="btn btn-primary" href="{{ route('visits.edit',$visit->id) }}">Update</a></td>
+											<!-- <td><a class="btn btn-primary" href=" route('visits.edit',$visit->id) }}">Update</a></td> -->
 					                    </tr>
 					                @endforeach
 					                <hr/>

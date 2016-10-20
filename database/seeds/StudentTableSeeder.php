@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Student;
+use App\User;
 
 class StudentTableSeeder extends Seeder
 {
@@ -24,7 +26,10 @@ class StudentTableSeeder extends Seeder
         $student->state = 'NE';
         $student->zip = '68135'; 
         $student->phone = '4027776666';
+        $student->school = 'UNO';
+        $student->dob = '2016/01/19';
+        $student->gender = 'Male';
+        $student->user_id = $student_mentor_0->id;
         $student->save();
-        $student->users()->attach($student_mentor_0);
     }
 }

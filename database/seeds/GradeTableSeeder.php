@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Grade;
+use App\Student;
 
 class GradeTableSeeder extends Seeder
 {
@@ -11,13 +13,14 @@ class GradeTableSeeder extends Seeder
      */
     public function run()
     {
-    	$grade_student_0 = Student::where('name','Student')->first();
+    	$grade_student_0 = Student::where('firstName','Student')->first();
 
+        $grade = new Grade();
         $grade->subject = 'Mathematics';
         $grade->period = '3 credits';
         $grade->actual = '4.0';
         $grade->comments = 'He did very well in the class';
+        $grade->student_id = $grade_student_0->id;
         $grade->save();
-        $grade->students()->attach($grade_student_0);
     }
 }

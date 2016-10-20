@@ -106,7 +106,7 @@
 						    <input type="radio" name="mentorToggle" id="option2" autocomplete="off" value="2"> View My Student Profile
 						  </label>
 						  <label class="btn btn-primary">
-						    <input type="radio" name="mentorToggle" id="option3" autocomplete="off" value="3"> Attendance
+						    <input type="radio" name="mentorToggle" id="option3" autocomplete="off" value="3"> Visits
 						  </label>
 						</div>
 						</div>
@@ -212,18 +212,21 @@
 									<table class="table table-bordered table-striped table-hover table-inverse">
 										<thead>
 											<th>Student</th>
+											<th>Date</th>
 											<th>Present</th>
 										</thead>
 										<tbody>
-											@foreach ($students as $student)
+											@foreach ($visits as $visit)
 											<tr>
 												<td>
-													{{ $student->firstName }}
+													{{ $visit->student->firstName }}
 												</td>
 												<td>
-													<input type="hidden" name="student_id" value="{{$student->id}}">
+													<input type="text" name="Date" readonly value="{{$visit->Date}}">
+												</td>
+												<td>
 													<label class="switchround" >
-													  <input type="checkbox" name="actual" value="Present">
+													  <input type="checkbox" id="isPresent" {{ $visit->actual === 'Present'  ? 'checked' : ''}} name="actual" value="Present">
 													  <div class="slider round"></div>
 													</label>
 												</td>

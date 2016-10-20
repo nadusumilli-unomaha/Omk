@@ -42,8 +42,16 @@
                     <td><?php echo ($student['phone']); ?></td>
                 </tr>
                 <tr>
-                    <td>Type</td>
-                    <td><?php echo ($student['type']); ?></td>
+                    <td>School</td>
+                    <td><?php echo ($student['school']); ?></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td><?php echo ($student['dob']); ?></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td><?php echo ($student['gender']); ?></td>
                 </tr>
             </tbody>
         </table>

@@ -34,7 +34,12 @@ Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
 		'uses' => 'UserController@postAdminAssignRoles',
 		'before' => 'guest'
 	]);
+	Route::resource('users','UserController',['only'=>'create']);
 	Route::resource('users','UserController',['only'=>'destroy']);
+	Route::resource('users','UserController',['only'=>'store']);
+	Route::resource('students','StudentController',['only'=>'destroy']);
+	Route::resource('grades','GradeController',['only'=>'destroy']);
+	Route::resource('visits','VisitController',['only'=>'destroy']);
 });
 
 //############################################################################
@@ -42,8 +47,20 @@ Route::group(['middleware' => 'roles', 'roles'=>'Admin'], function()
 //############################################################################
 Route::group(['middleware' => 'roles', 'roles'=>['Admin', 'Employee']], function()
 {
-	Route::resource('users','UserController',['only'=>'create']);
-	Route::resource('users','UserController',['only'=>'show']);
+	Route::resource('users','UserController',['only'=>'edit']);
+	Route::resource('users','UserController',['only'=>'update']);
+	Route::resource('students','StudentController',['only'=>'create']);
+	Route::resource('students','StudentController',['only'=>'store']);
+	Route::resource('students','StudentController',['only'=>'edit']);
+	Route::resource('students','StudentController',['only'=>'update']);
+	Route::resource('grades','GradeController',['only'=>'create']);
+	Route::resource('grades','GradeController',['only'=>'store']);
+	Route::resource('grades','GradeController',['only'=>'edit']);
+	Route::resource('grades','GradeController',['only'=>'update']);
+	Route::resource('visits','VisitController',['only'=>'create']);
+	Route::resource('visits','VisitController',['only'=>'store']);
+	Route::resource('visits','VisitController',['only'=>'edit']);
+	Route::resource('visits','VisitController',['only'=>'update']);
 });
 
 //###################################################################################
@@ -54,14 +71,16 @@ Route::group(['middleware' => 'roles', 'roles'=>['Admin', 'Employee', 'Mentor']]
 	Route::get('/home', 'HomeController@index');
 	Route::get('resetPassword', 'HomeController@resetPassword');
 	Route::post('updatePassword', 'HomeController@updatePassword');
-	Route::resource('students','StudentController');
-	Route::resource('visits','VisitController');
-	Route::resource('grades','GradeController');
+	Route::resource('students','StudentController',['only'=>'index']);
+	Route::resource('students','StudentController',['only'=>'show']);
+	Route::resource('grades','GradeController',['only'=>'index']);
+	Route::resource('grades','GradeController',['only'=>'show']);
+	Route::resource('visits','VisitController',['only'=>'index']);
+	Route::resource('visits','VisitController',['only'=>'show']);
 	Route::resource('notes','NoteController');
 	Route::resource('notifications','NotificationController');
 	//The below is how we can restrict access to defenitive users. Create a group and define access.
-	Route::resource('users','UserController',['only'=>'edit']);
-	Route::resource('users','UserController',['only'=>'update']);
+	Route::resource('users','UserController',['only'=>'show']);
 });
 
 //###################################################################################################################

@@ -325,7 +325,6 @@
 					                    <th>Zip</th>
 					                    <th>Primary Email</th>
 					                    <th>Phone</th>
-					                    <th>password</th>
 					                    <th>Actions</th>
 					                </tr>
 					                </thead>
@@ -340,7 +339,6 @@
 			                                <td>{{ $mentor->zip }}</td>
 			                                <td>{{ $mentor->email }}</td> 
 			                                <td>{{ $mentor->phone }}</td>
-			                                <td>{{$mentor->password_resets['email']}}</td>
 											<td><a class="btn btn-primary" href="{{ route('users.edit',$mentor->id) }}">Update</a></td>
 					                    </tr>
 					                @endforeach
@@ -369,8 +367,8 @@
 					                    <tr>
 			                                <td>{{ $visit->Date }}</td>
 			                                <td>{{ $visit->check }}</td>
-			                                <td>{{ $visit->users->firstName }}</td>
-			                                <td>{{ $visit->student['firstName'] }}</td>
+			                                <td>{{ $visit->user->firstName }}</td>
+			                                <td>{{ $visit->student->firstName }}</td>
 											<td><a class="btn btn-primary" href="{{ route('visits.edit',$visit->id) }}">Update</a></td>
 					                    </tr>
 					                @endforeach
@@ -392,7 +390,6 @@
 					                    <th>Grade</th>
 					                    <th>Comments</th>
 					                    <th>Student</th>
-					                    <th>Mentor</th>
 					                    <th>Actions</th>
 					                </tr>
 					                </thead>
@@ -403,8 +400,7 @@
 			                                <td>{{ $grade->period }}</td>
 			                                <td>{{ $grade->actual }}</td>
 			                                <td>{{ $grade->comments }}</td>
-			                                <td>{{ $grade->user['firstName'] }}</td>
-			                                <td>{{ $grade->student['firstName'] }}</td>
+			                                <td>{{ $grade->student->firstName }}</td>
 											<td><a class="btn btn-primary" href="{{ route('grades.edit',$grade->id) }}">Update</a></td>
 					                    </tr>
 					                @endforeach

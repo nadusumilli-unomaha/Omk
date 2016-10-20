@@ -12,7 +12,6 @@ class Grade extends Model
         'actual',
         'comments',
         'student_id',
-        'user_id',
     ];
 
 
